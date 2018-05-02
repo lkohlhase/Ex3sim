@@ -1,0 +1,15 @@
+Okay here are just some random ramblings of what I want the structure of things to look like:
+
+At the top level we want to have a Scene class, which has several participants. It also has initiative order, and history of various things. The scene resolves attacks etc.
+It should do so by iterating through rounds, then asking the current actor to take an action (aka attack other dude), and then resolving the attack.
+
+
+Top level interfaces:
+CombatActor
+We'll have various combat actors that interact with each other. Should have initiative values, health etc.
+
+Action
+Should be between two people/actors, A launches attack at B. Should resolve in several steps, where both people get to reply with various charms/what have you.
+
+
+
