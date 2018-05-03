@@ -47,17 +47,17 @@ public class DiceThrow {
             String numbervalue=rollvalues.rollvalues[i];
             int count=Results[i];
             for (int j=0; j<count;j++){
-                if (numbervalue=="0" || numbervalue=="1" || numbervalue=="2"){
+                if (numbervalue.equals("0") || numbervalue.equals("1") || numbervalue.equals("2")){
                     successcount+=Integer.parseInt(numbervalue);
                 }
-                else if(numbervalue=="reroll"){
+                else if(numbervalue.equals("reroll")){
                     rerollcount++;
                 }
-                else if(numbervalue=="cascading1"){
+                else if(numbervalue.equals("cascading1")){
                     successcount++;
                     rerollcount++;
                 }
-                else if(numbervalue=="cascading2"){
+                else if(numbervalue.equals("cascading2")){
                     successcount+=2;
                     rerollcount++;
                 }

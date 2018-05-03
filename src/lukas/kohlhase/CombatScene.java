@@ -4,8 +4,8 @@ import java.util.*;
 public class CombatScene {
     Vector<CombatActor> participants;
     int currentround;
-    Vector<CombatActor> yetToAct =new Vector<CombatActor>();
-    Vector<CombatActor> alreadyActed = new Vector<CombatActor>();
+    Vector<CombatActor> yetToAct =new Vector();
+    Vector<CombatActor> alreadyActed = new Vector();
     public CombatScene(Vector<CombatActor> actors){
         participants=actors;
         currentround=0;

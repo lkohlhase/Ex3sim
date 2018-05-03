@@ -1,6 +1,6 @@
 package lukas.kohlhase;
 
-public class Abilities {
+public class Abilities { //TODO: Implement Specialties, if we can be bothered.
     int Melee,Brawl,Archery,Thrown,War; // Dawn
     int Integrity,Performance,Presence,Survival,Resistance; // Zenith
     int Craft,Medicine,Investigation,Occult,Lore; // Twilight

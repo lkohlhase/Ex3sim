@@ -8,9 +8,9 @@ public class MeleeWeapon {
     private int Overwhelming;
     private int Defense;
     public enum WeaponTags{BALANCED, BASHING, BRAWL, CHOPPING, DISARMING, FLEXIBLE, IMPROVISED, GRAPPLING, LETHAL, MARTIAL, MELEE, NATURAL, PIERCING, REACHING, SHIELD, SMASHING, THROWN, TWOHANDED, WORN}
-    ArrayList<WeaponTags> Tags;
+    public ArrayList<WeaponTags> Tags;
     Boolean Artifact;
-    public enum WeaponType{LIGHT,MEDIUM,HEAVY};
+    public enum WeaponType{LIGHT,MEDIUM,HEAVY}
     WeaponType Type; // We can generate the private stuff according to the tags and the type of weapon
     damage damagetype;
     ArrayList<String> usablewith;
