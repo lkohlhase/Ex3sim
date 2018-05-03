@@ -2,6 +2,10 @@ package lukas.kohlhase;
 import java.lang.Math.*;
 public class WitheringAttack implements Action{
     CombatActor attacker,defender;
+    int baseAttackdice;
+    int baseAccuracy;
+    CharmCost cost;
+    int ignoredArmorSoak=0;
     int attackdice,dv,defsoak, thresholdSuccesses,rawdamage,postsoakdice,overwhelming;
     public  WitheringAttack(CombatActor A, CombatActor B){
         attacker=A;
@@ -17,6 +21,9 @@ public class WitheringAttack implements Action{
         overwhelming=ov;
     }
     public void resolve(){
+        /*
+        First implementatinon of resolving a withering attack.
+         */
         System.out.println(attacker.getName()+" withering attacked "+defender.getName());
         attackdice=attacker.declareWitheringAttack();
         dv=defender.declareWitheringDV(attackdice);
