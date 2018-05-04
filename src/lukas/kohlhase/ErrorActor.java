@@ -158,6 +158,106 @@ public class ErrorActor implements CombatActor {
     }
 
     @Override
+    public void declareWitheringAttack(AttackState x) {
+
+    }
+
+    @Override
+    public void declareWitheringDV(AttackState x) {
+
+    }
+
+    @Override
+    public void AttackerModifyAttackRoll(AttackState x) {
+
+    }
+
+    @Override
+    public void DefenderModifyAttackRoll(AttackState x) {
+
+    }
+
+    @Override
+    public void changeThreshholdAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void changeThreshholdDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyRawDamageAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyRawDamageDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyTotalSoakAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyTotalSoakDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void declarePostSoakAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void declarePostSoakDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDamageRollAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDamageRollDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyInitiativeDamageAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyInitiativeDamageDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void updateInitiativeAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void updateInitiativeDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void failedAttackAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void failedAttackDefender(AttackState x) {
+
+    }
+
+    @Override
     public HealthLevel getHealth() {
         return null;
     }
