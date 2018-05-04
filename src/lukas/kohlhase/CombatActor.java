@@ -9,6 +9,26 @@ public interface CombatActor extends Actor {
     int getInitiative();
     void setInitiative(int x);
     int declareWitheringAttack();
+    void declareWitheringAttack(AttackState x);
+    void declareWitheringDV(AttackState x);
+    void AttackerModifyAttackRoll(AttackState x);
+    void DefenderModifyAttackRoll(AttackState x);
+    void changeThreshholdAttacker(AttackState x);
+    void changeThreshholdDefender(AttackState x);
+    void modifyRawDamageAttacker(AttackState x);
+    void modifyRawDamageDefender(AttackState x);
+    void modifyTotalSoakAttacker(AttackState x);
+    void modifyTotalSoakDefender(AttackState x);
+    void declarePostSoakAttacker(AttackState x);
+    void declarePostSoakDefender(AttackState x);
+    void modifyDamageRollAttacker(AttackState x);
+    void modifyDamageRollDefender(AttackState x);
+    void modifyInitiativeDamageAttacker(AttackState x);
+    void modifyInitiativeDamageDefender(AttackState x);
+    void updateInitiativeAttacker(AttackState x);
+    void updateInitiativeDefender(AttackState x);
+    void failedAttackAttacker(AttackState x);
+    void failedAttackDefender(AttackState x);
     int declareDecisiveAttack();
     int declareWitheringDV(int x);
     int declareDecisiveDV(int x);
@@ -33,5 +53,5 @@ public interface CombatActor extends Actor {
     void removeEnemy(CombatActor a);
     void removeAlly(CombatActor a);
     void setEnemies(ArrayList<CombatActor> a);
-     void setAllies(ArrayList<CombatActor> a);
+    void setAllies(ArrayList<CombatActor> a);
 }

@@ -9,6 +9,7 @@ public class AttackState {
     int initialDv;
     int changedAttackpool;
     int changedDv;
+    Rollvaluation AttackerAttackRollValuation;
     DiceThrow initialAttackRoll;
     DiceThrow attackerModifiedAttackRoll;
     DiceThrow defenderModifiedAttackRoll;
@@ -30,7 +31,8 @@ public class AttackState {
     DiceThrow damageRoll;
     DiceThrow damageRollModifiedAttacker;
     DiceThrow damageRollModifiedDefender;
-    int iniativeDamageDone;
+    Rollvaluation damageRollValuation;
+    int initiativeDamageDone;
     int initiativeDamageDoneModifiedAttacker;
     int initiativeDamageDoneModifiedDefender;
     HealthLevel healthDamageDone;

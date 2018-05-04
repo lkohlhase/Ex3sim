@@ -37,6 +37,7 @@ public class FullCharacter implements CombatActor {
                         temp.baseAccuracy = weapon.getAccuracy();
                         temp.baseAttackdice = this.attributes.Dexterity + this.abilities.Melee;
                         temp.cost.TempDefence = weapon.getDefense();
+                        temp.weapon=weapon;
                         switch (possibility) {
                             case "BRAWL":
                                 break;
@@ -68,6 +69,7 @@ public class FullCharacter implements CombatActor {
                         WitheringAttack temp = new WitheringAttack(this, enemy);
                         temp.baseAccuracy = weapon.getAccuracy();
                         temp.baseAttackdice = this.attributes.Dexterity + this.abilities.Brawl; //TODO: Implement specialties.
+                        temp.weapon=weapon;
                         //TODO: Decide on whether letting Brawl get these tags is OP/intended
                         switch (possibility) {
                             case "BRAWL":
