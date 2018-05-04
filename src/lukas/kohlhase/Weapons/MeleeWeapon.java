@@ -1,4 +1,6 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Weapons;
+
+import lukas.kohlhase.damage;
 
 import java.util.ArrayList;
 //Possible TODO: worry about attunement costs of weapons.
@@ -13,7 +15,7 @@ public class MeleeWeapon {
     public enum WeaponType{LIGHT,MEDIUM,HEAVY}
     WeaponType Type; // We can generate the private stuff according to the tags and the type of weapon
     damage damagetype;
-    ArrayList<String> usablewith;
+    public ArrayList<String> usablewith;
     public void setAccuracy(int accuracy) {
         Accuracy = accuracy;
     }

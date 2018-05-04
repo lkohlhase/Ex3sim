@@ -1,6 +1,8 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Characters;
 
 import java.util.ArrayList;
+
+import lukas.kohlhase.*;
 import lukas.kohlhase.Weapons.*;
 public class FullCharacter implements CombatActor {
     /*

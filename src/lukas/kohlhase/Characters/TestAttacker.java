@@ -1,4 +1,6 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Characters;
+
+import lukas.kohlhase.*;
 
 import java.util.ArrayList;
 

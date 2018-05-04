@@ -1,4 +1,6 @@
 package lukas.kohlhase;
+import lukas.kohlhase.Characters.ErrorActor;
+
 import java.util.*;
 
 public class CombatScene {

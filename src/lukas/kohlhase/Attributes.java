@@ -1,9 +1,9 @@
 package lukas.kohlhase;
 
 public class Attributes {
-    int Strength,Dexterity,Stamina;
-    int Charisma,Manipulation, Appearance;
-    int Wits,Intelligence,Perception;
+    public int Strength,Dexterity,Stamina;
+    public int Charisma,Manipulation, Appearance;
+    public int Wits,Intelligence,Perception;
     public Attributes() {
         Strength=0;
         Dexterity=0;

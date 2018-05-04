@@ -1,12 +1,13 @@
 package lukas.kohlhase;
-import java.lang.Math.*;
+import lukas.kohlhase.Weapons.MeleeWeapon;
+
 public class WitheringAttack implements Action{
-    CombatActor attacker,defender;
-    MeleeWeapon weapon;
-    int baseAttackdice;
-    int baseAccuracy;
-    CharmCost cost;
-    int ignoredArmorSoak=0;
+    public CombatActor attacker,defender;
+    public MeleeWeapon weapon;
+    public int baseAttackdice;
+    public int baseAccuracy;
+    public CharmCost cost;
+    public int ignoredArmorSoak=0;
     int attackdice,dv,defsoak, thresholdSuccesses,rawdamage,postsoakdice,overwhelming;
     public  WitheringAttack(CombatActor A, CombatActor B){
         attacker=A;

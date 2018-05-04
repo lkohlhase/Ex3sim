@@ -1,11 +1,11 @@
 package lukas.kohlhase;
 
 public class Abilities { //TODO: Implement Specialties, if we can be bothered.
-    int Melee,Brawl,Archery,Thrown,War; // Dawn
-    int Integrity,Performance,Presence,Survival,Resistance; // Zenith
-    int Craft,Medicine,Investigation,Occult,Lore; // Twilight
-    int Stealth,Athletics,Larceny,Awareness,Dodge; // Night
-    int Socialize,Bureaucracy,Ride,Sail,Linguistics; // Eclipse
+    public int Melee,Brawl,Archery,Thrown,War; // Dawn
+    public int Integrity,Performance,Presence,Survival,Resistance; // Zenith
+    public int Craft,Medicine,Investigation,Occult,Lore; // Twilight
+    public int Stealth,Athletics,Larceny,Awareness,Dodge; // Night
+    public int Socialize,Bureaucracy,Ride,Sail,Linguistics; // Eclipse
 
     public Abilities() {
         Melee = 0;
