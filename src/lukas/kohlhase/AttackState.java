@@ -38,5 +38,8 @@ public class AttackState {
     HealthLevel healthDamageDone;
     HealthLevel healthDamageDoneModifiedAttacker;
     HealthLevel healthDamageDoneModifiedDefender; //TODO: Possibly add something like charms used in which phases.
+    int weaponDamage;
+    Boolean defenderCrashed;
+    Boolean attackerCrashed;
 
 }

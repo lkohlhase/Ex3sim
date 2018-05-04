@@ -66,5 +66,10 @@ public class DiceThrow {
         }
         return successcount; // TODO: Make a version of this that is not pure default, and make it reroll etc.
     }
-
+    DiceThrow(DiceThrow tobecopied){
+        /*
+        Very simple copy constructor for DiceThrow. Since it only contains the results of one throw, we simply copy results over.
+         */
+        this.Results=tobecopied.Results;
+    }
 }

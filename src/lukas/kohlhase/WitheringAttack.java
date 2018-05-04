@@ -26,7 +26,9 @@ public class WitheringAttack implements Action{
         This will eventually replace resolve(), and is being reworked to work with the attackstate idea of things.
          */
         //TODO: Possibly break this sort of stuff into different functions
+
         AttackState state=new AttackState();
+        state.weaponDamage=weapon.getDamage();
         state.initialAttackpool=baseAttackdice+baseAccuracy;
         attacker.declareWitheringAttack(state); // If the attacker wants to change the pool, he modifies the state accordingly.
         defender.declareWitheringDV(state); // Defender declares their dv against this specific attack. This sets both initialdv and changedDv
@@ -53,7 +55,7 @@ public class WitheringAttack implements Action{
             defender.modifyDamageRollDefender(state); //sets damageRollmodifiedDefender
             state.initiativeDamageDone=state.damageRollModifiedDefender.evaluateResults(state.damageRollValuation);
             attacker.modifyInitiativeDamageAttacker(state);
-            defender.modifyInitiativeDamageDefender(state);
+            defender.modifyInitiativeDamageDefender(state); //Since this is the last change of initiative, we can check whether the defender was crashed here.
             attacker.updateInitiativeAttacker(state);
             defender.updateInitiativeDefender(state);//Here we should handle all the initiative changes respectively, with checking if people are crashed etc.
         }
