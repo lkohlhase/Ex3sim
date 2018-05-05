@@ -1,5 +1,5 @@
 package lukas.kohlhase;
-import lukas.kohlhase.Weapons.MeleeWeapon;
+import lukas.kohlhase.Items.MeleeWeapon;
 
 public class WitheringAttack implements Action{
     public CombatActor attacker,defender;

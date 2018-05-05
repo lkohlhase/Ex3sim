@@ -1,4 +1,4 @@
-package lukas.kohlhase.Weapons;
+package lukas.kohlhase.Items;
 
 import java.util.ArrayList;
 

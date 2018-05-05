@@ -1,4 +1,4 @@
-package lukas.kohlhase.Weapons;
+package lukas.kohlhase.Items;
 
 import lukas.kohlhase.damage;
 
@@ -9,6 +9,7 @@ public class MeleeWeapon {
     private int Damage;
     private int Overwhelming;
     private int Defense;
+    private int AttunementCost;
     public enum WeaponTags{BALANCED, BASHING, BRAWL, CHOPPING, DISARMING, FLEXIBLE, IMPROVISED, GRAPPLING, LETHAL, MARTIAL, MELEE, NATURAL, PIERCING, REACHING, SHIELD, SMASHING, THROWN, TWOHANDED, WORN}
     public ArrayList<WeaponTags> Tags;
     Boolean Artifact;
@@ -59,12 +60,14 @@ public class MeleeWeapon {
                     Damage=10;
                     Defense=0;
                     Overwhelming=3;
+                    AttunementCost = 5;
                 }
                 else {
                     Accuracy=4;
                     Damage=7;
                     Overwhelming=1;
                     Defense=0;
+                    AttunementCost = 0;
                 }
 
             case MEDIUM:
@@ -73,12 +76,14 @@ public class MeleeWeapon {
                     Damage=12;
                     Defense=1;
                     Overwhelming=4;
+                    AttunementCost = 5;
                 }
                 else {
                     Accuracy=2;
                     Damage=9;
                     Defense=1;
                     Overwhelming=1;
+                    AttunementCost = 0;
                 }
             case HEAVY:
                 if(Artifact){
@@ -86,12 +91,14 @@ public class MeleeWeapon {
                     Damage=14;
                     Defense=0;
                     Overwhelming=5;
+                    AttunementCost = 5;
                 }
                 else {
                     Accuracy=0;
                     Damage=11;
                     Defense=-1;
                     Overwhelming=0;
+                    AttunementCost = 0;
                 }
         }
         //Now we modify the weapons according to what tags they have.

@@ -3,7 +3,7 @@ package lukas.kohlhase.Characters;
 import java.util.ArrayList;
 
 import lukas.kohlhase.*;
-import lukas.kohlhase.Weapons.*;
+import lukas.kohlhase.Items.*;
 public class FullCharacter implements CombatActor {
     /*
         Intended for inheritance from, so that basic calculations of dicepools etc. from stats is possible
