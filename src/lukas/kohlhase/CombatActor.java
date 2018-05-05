@@ -9,6 +9,7 @@ public interface CombatActor extends Actor {
     int getInitiative();
     void setInitiative(int x);
     int declareWitheringAttack();
+//========================= Responses to various phases of withering attacks ===========================================
     void declareWitheringAttack(AttackState x);
     void declareWitheringDV(AttackState x);
     void modifyWitheringAttackRollAttacker(AttackState x);
@@ -29,6 +30,24 @@ public interface CombatActor extends Actor {
     void updateInitiativeDefender(AttackState x);
     void failedWitheringAttackAttacker(AttackState x);
     void failedWitheringAttackDefender(AttackState x);
+//=========================Responses to various phases of decisive attacks =============================================
+    void declareDecisiveAttack(AttackState x);
+    void declareDecisiveDV(AttackState x);
+    void modifyDecisiveAttackRollAttacker(AttackState x);
+    void modifyDecisiveAttackRollDefender(AttackState x);
+    void changeDecisiveThreshholdAttacker(AttackState x);
+    void changeDecisiveThreshholdDefender(AttackState x);
+    void modifyDecisiveHitAttacker(AttackState x);
+    void modifyDecisiveHitDefender(AttackState x);
+    void modifyDecisiveDamageRollAttacker(AttackState x);
+    void modifyDecisiveDamageRollDefender(AttackState x);
+    void resetBaseInitiative(AttackState x);
+    void modifyDecisiveDamageDoneAttacker(AttackState x);
+    void modifyDecisiveDamageDoneDefender(AttackState x);
+    void declareDecisivePostMissAttacker(AttackState x);
+    void declareDecisivePostMissDefender(AttackState x);
+
+//=========================Old Implementation of Attack Responses etc.     =============================================
     int declareDecisiveAttack();
     int declareWitheringDV(int x);
     int declareDecisiveDV(int x);
@@ -47,7 +66,7 @@ public interface CombatActor extends Actor {
     int declareHardness();
     HealthLevel getHealth();
     void setHealth(HealthLevel a);
-    void takeDamage(int b,damage x);
+    void takeDamage(int b,damageType x);
     void addEnemy(CombatActor a);
     void addAlly(CombatActor a);
     void removeEnemy(CombatActor a);

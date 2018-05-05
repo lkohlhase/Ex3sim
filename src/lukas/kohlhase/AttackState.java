@@ -4,7 +4,7 @@ public class AttackState {
     /*
     The intention is for instances of this class to be passed along by attacker and defender, and being changed constantly. Contains all the relevant information about an attack, so taht people can react to it.
      */
-    public AttackState currentPhase;
+    public AttackState currentPhase; //TODO: Add this
     public int initialAttackpool;
     public int initialDv;
     public int changedAttackpool;
@@ -35,11 +35,16 @@ public class AttackState {
     public int initiativeDamageDone;
     public int initiativeDamageDoneModifiedAttacker;
     public int initiativeDamageDoneModifiedDefender;
-    public HealthLevel healthDamageDone;
-    public HealthLevel healthDamageDoneModifiedAttacker;
-    public HealthLevel healthDamageDoneModifiedDefender; //TODO: Possibly add something like charms used in which phases.
+    public int healthDamageDone;
+    public int healthDamageDoneModifiedAttacker;
+    public int healthDamageDoneModifiedDefender; //TODO: Possibly add something like charms used in which phases.
     public int weaponDamage;
     public Boolean defenderCrashed;
     public Boolean attackerCrashed;
+
+    public int hardness;
+    public int decisiveRawDamage;
+    public int decisiveRawDamageModifiedAttacker;
+    public int decisiveRawDamageModifiedDefender;
 
 }

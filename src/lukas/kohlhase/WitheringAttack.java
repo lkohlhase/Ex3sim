@@ -42,7 +42,7 @@ public class WitheringAttack implements Action{
         attacker.changeWitheringThreshholdAttacker(state); //This sets thresholdModifiedAttacker
         defender.changeWitheringThreshholdDefender(state); //This sets thresholdModifiedDefender
         if(state.thresholdModifiedDefender>=0) {
-            attacker.modifyWitheringRawDamageAttacker(state); //Sets normal raw damage, based on strength and weapon damage, and then sets rawDamagemModifiedAttacker
+            attacker.modifyWitheringRawDamageAttacker(state); //Sets normal raw damageType, based on strength and weapon damageType, and then sets rawDamagemModifiedAttacker
             defender.modifyWitheringRawDamageDefender(state); //this sets rawDamageModifiedDefender, and sets up the various soak values, so natural soak and armor soak.
             state.totalSoak = Math.max(state.defenderArmorSoak - ignoredArmorSoak, 0) + state.defenderNaturalSoak; //TODO: Check whether this is the actual soak formula.
             attacker.modifyTotalSoakAttacker(state); //This sets totalSoakmodifiedAttacker. Don't think this actually has support in the solar charmset, but giving opportunities to work with.
@@ -91,7 +91,7 @@ public class WitheringAttack implements Action{
 
             DiceThrow damageRoll=new DiceThrow(postsoakdice2);
             int initiativechange=damageRoll.evaluateResults();
-            System.out.println(attacker.getName()+" rolled "+initiativechange+" successes on "+postsoakdice2+" damage dice.");
+            System.out.println(attacker.getName()+" rolled "+initiativechange+" successes on "+postsoakdice2+" damageType dice.");
             if (initiativechange>defender.getInitiative() && defender.crashbreakable()){ // attacker crashed defender
                 attacker.gainInitiative(5);
             }

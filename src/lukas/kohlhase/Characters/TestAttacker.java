@@ -74,7 +74,7 @@ public class TestAttacker implements CombatActor {
         return 5; //DV of 5
     }
     public int declareWitheringPostHit(int threshold){
-        return threshold+5+5;//5 strength and 5 weapon damage.
+        return threshold+5+5;//5 strength and 5 weapon damageType.
     }
 
     public Action declareWitheringPostMiss(){
@@ -255,7 +255,7 @@ public class TestAttacker implements CombatActor {
     }
 
     @Override
-    public void takeDamage(int b, damage x) {
+    public void takeDamage(int b, damageType x) {
         health.takeDamage(b,x);
     }
 

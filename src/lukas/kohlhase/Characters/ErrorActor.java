@@ -85,7 +85,7 @@ public class ErrorActor implements CombatActor {
     }
 
     @Override
-    public void takeDamage(int b, damage x) {
+    public void takeDamage(int b, damageType x) {
 
     }
 

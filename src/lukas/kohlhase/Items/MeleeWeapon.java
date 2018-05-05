@@ -1,11 +1,12 @@
 package lukas.kohlhase.Items;
 
-import lukas.kohlhase.damage;
+import lukas.kohlhase.damageType;
 
 import java.util.ArrayList;
 //Possible TODO: worry about attunement costs of weapons.
 public class MeleeWeapon {
     private int Accuracy;
+
     private int Damage;
     private int Overwhelming;
     private int Defense;
@@ -14,8 +15,8 @@ public class MeleeWeapon {
     public ArrayList<WeaponTags> Tags;
     Boolean Artifact;
     public enum WeaponType{LIGHT,MEDIUM,HEAVY}
-    WeaponType Type; // We can generate the private stuff according to the tags and the type of weapon
-    damage damagetype;
+    public WeaponType Type; // We can generate the private stuff according to the tags and the type of weapon
+    public damageType damagetype;
     public ArrayList<String> usablewith;
     public void setAccuracy(int accuracy) {
         Accuracy = accuracy;
@@ -113,7 +114,7 @@ public class MeleeWeapon {
                     case BALANCED:
                         Overwhelming++;
                     case BASHING:
-                        damagetype=damage.BASHING;
+                        damagetype= damageType.BASHING;
                     case BRAWL:
                         usablewith.add("BRAWL");
                     case CHOPPING:
@@ -128,7 +129,7 @@ public class MeleeWeapon {
                     case GRAPPLING:
                         usablewith.add("GRAPPLING");
                     case LETHAL:
-                        damagetype=damage.LETHAL;
+                        damagetype= damageType.LETHAL;
                     case MARTIAL:
                         usablewith.add("MARTIAL");
                     case MELEE:
