@@ -15,6 +15,7 @@ public class FullCharacter implements CombatActor {
     ArrayList<CombatActor> enemies=new ArrayList<>();
     ArrayList<CombatActor> allies=new ArrayList<>();
     ArrayList<MeleeWeapon> arnament=new ArrayList<>(); //TODO: Add unarmed attack that every fullcharacter always has.
+    Armor armor=new NoArmor(); //If we want a character to have armor, it needs to be explicity set. We can just replace this value with a proper armor.
     Attributes attributes;
     Abilities abilities;
     int temporaryDefenseBonus=0;
@@ -301,6 +302,9 @@ public class FullCharacter implements CombatActor {
 
     @Override
     public void declareWitheringDV(AttackState x) {
+        int parryDV=(attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl)/2)+temporaryDefenseBonus; //We round down, so just using integer division here is fine.
+        int dodgeDV=(attributes.Dexterity+abilities.Dodge)/2+temporaryDefenseBonus-armor.getMobilityPenalty();
+        x.initialDv=Math.max(parryDV,dodgeDV); //Choose the higher one always.
         x.changedDv=x.initialDv;
     }
 

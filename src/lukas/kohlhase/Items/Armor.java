@@ -6,7 +6,7 @@ public class Armor {
     private int MobilityPenalty;
     private int AttunementCost;
     Boolean Artifact;
-    public enum ArmorType{LIGHT,MEDIUM,HEAVY};
+    public enum ArmorType{LIGHT,MEDIUM,HEAVY,UNARMORED};
     ArmorType Type;
     public Armor( ArmorType type, Boolean artifact) {
         Type = type;
@@ -49,6 +49,27 @@ public class Armor {
                     MobilityPenalty = 2;
                     AttunementCost = 0;
                 }
+            case UNARMORED:
+                Hardness=0;
+                Soak=0;
+                MobilityPenalty=0;
+                AttunementCost=0;
         }
+    }
+//Don't think we need setters. Not behaviour we really want.
+    public int getHardness() {
+        return Hardness;
+    }
+
+    public int getSoak() {
+        return Soak;
+    }
+
+    public int getMobilityPenalty() {
+        return MobilityPenalty;
+    }
+
+    public int getAttunementCost() {
+        return AttunementCost;
     }
 }
