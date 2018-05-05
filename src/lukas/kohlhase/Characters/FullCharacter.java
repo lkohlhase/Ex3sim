@@ -309,34 +309,34 @@ public class FullCharacter implements CombatActor {
     }
 
     @Override
-    public void AttackerModifyAttackRoll(AttackState x) {
+    public void modifyWitheringAttackRollAttacker(AttackState x) {
         x.attackerModifiedAttackRoll=new DiceThrow(x.initialAttackRoll);
         x.AttackerAttackRollValuation=new Rollvaluation(); //Just the default rollvaluation that mortals use.
     }
 
     @Override
-    public void DefenderModifyAttackRoll(AttackState x) {
+    public void modifyWitheringAttackRollDefender(AttackState x) {
         x.defenderModifiedAttackRoll=new DiceThrow(x.attackerModifiedAttackRoll);
     }
 
     @Override
-    public void changeThreshholdAttacker(AttackState x) {
+    public void changeWitheringThreshholdAttacker(AttackState x) {
         x.thresholdModifiedAttacker=x.threshholdSuccesses;
     }
 
     @Override
-    public void changeThreshholdDefender(AttackState x) {
+    public void changeWitheringThreshholdDefender(AttackState x) {
         x.thresholdModifiedDefender=x.thresholdModifiedAttacker;
     }
 
     @Override
-    public void modifyRawDamageAttacker(AttackState x) {
+    public void modifyWitheringRawDamageAttacker(AttackState x) {
         x.rawDamage=attributes.Strength+x.weaponDamage+x.thresholdModifiedDefender;
         x.rawDamageModifiedAttacker=x.rawDamage;
     }
 
     @Override
-    public void modifyRawDamageDefender(AttackState x) {
+    public void modifyWitheringRawDamageDefender(AttackState x) {
         x.rawDamageModifiedDefender=x.rawDamageModifiedAttacker;
         x.defenderNaturalSoak=attributes.Stamina;
         x.defenderArmorSoak=0; //TODO: Implement Armor and then add the proper value here.
@@ -363,13 +363,13 @@ public class FullCharacter implements CombatActor {
     }
 
     @Override
-    public void modifyDamageRollAttacker(AttackState x) {
+    public void modifyWitheringDamageRollAttacker(AttackState x) {
         x.damageRollModifiedAttacker=new DiceThrow(x.damageRoll);
         x.damageRollValuation=new Rollvaluation(); //Default values again
     }
 
     @Override
-    public void modifyDamageRollDefender(AttackState x) {
+    public void modifyWitheringDamageRollDefender(AttackState x) {
         x.damageRollModifiedDefender=new DiceThrow(x.damageRollModifiedAttacker);
     }
 
@@ -404,12 +404,12 @@ public class FullCharacter implements CombatActor {
     }
 
     @Override
-    public void failedAttackAttacker(AttackState x) {
+    public void failedWitheringAttackAttacker(AttackState x) {
         //Default response to missing your attack is just to shout unluckers and be done with it.
     }
 
     @Override
-    public void failedAttackDefender(AttackState x) {
+    public void failedWitheringAttackDefender(AttackState x) {
         //Default response to opponent missing his attack is to LUL and be done with it.
     }
 }

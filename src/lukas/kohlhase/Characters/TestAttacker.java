@@ -114,32 +114,32 @@ public class TestAttacker implements CombatActor {
     }
 
     @Override
-    public void AttackerModifyAttackRoll(AttackState x) {
+    public void modifyWitheringAttackRollAttacker(AttackState x) {
 
     }
 
     @Override
-    public void DefenderModifyAttackRoll(AttackState x) {
+    public void modifyWitheringAttackRollDefender(AttackState x) {
 
     }
 
     @Override
-    public void changeThreshholdAttacker(AttackState x) {
+    public void changeWitheringThreshholdAttacker(AttackState x) {
 
     }
 
     @Override
-    public void changeThreshholdDefender(AttackState x) {
+    public void changeWitheringThreshholdDefender(AttackState x) {
 
     }
 
     @Override
-    public void modifyRawDamageAttacker(AttackState x) {
+    public void modifyWitheringRawDamageAttacker(AttackState x) {
 
     }
 
     @Override
-    public void modifyRawDamageDefender(AttackState x) {
+    public void modifyWitheringRawDamageDefender(AttackState x) {
 
     }
 
@@ -164,12 +164,12 @@ public class TestAttacker implements CombatActor {
     }
 
     @Override
-    public void modifyDamageRollAttacker(AttackState x) {
+    public void modifyWitheringDamageRollAttacker(AttackState x) {
 
     }
 
     @Override
-    public void modifyDamageRollDefender(AttackState x) {
+    public void modifyWitheringDamageRollDefender(AttackState x) {
 
     }
 
@@ -194,12 +194,12 @@ public class TestAttacker implements CombatActor {
     }
 
     @Override
-    public void failedAttackAttacker(AttackState x) {
+    public void failedWitheringAttackAttacker(AttackState x) {
 
     }
 
     @Override
-    public void failedAttackDefender(AttackState x) {
+    public void failedWitheringAttackDefender(AttackState x) {
 
     }
 

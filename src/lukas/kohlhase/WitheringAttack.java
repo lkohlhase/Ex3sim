@@ -35,15 +35,15 @@ public class WitheringAttack implements Action{
         defender.declareWitheringDV(state); // Defender declares their dv against this specific attack. This sets both initialdv and changedDv
         DiceThrow attackRoll=new DiceThrow(state.changedAttackpool);
         state.initialAttackRoll=attackRoll;
-        attacker.AttackerModifyAttackRoll(state); //This sets stuff like attackerModifiedAttackRoll and AttackerRollValuation
-        defender.DefenderModifyAttackRoll(state); //This sets defender defenderModifiedAttackRoll
+        attacker.modifyWitheringAttackRollAttacker(state); //This sets stuff like attackerModifiedAttackRoll and AttackerRollValuation
+        defender.modifyWitheringAttackRollDefender(state); //This sets defender defenderModifiedAttackRoll
         state.attackRollSuccesses=state.defenderModifiedAttackRoll.evaluateResults(state.AttackerAttackRollValuation);
         state.threshholdSuccesses=state.attackRollSuccesses-state.changedDv;
-        attacker.changeThreshholdAttacker(state); //This sets thresholdModifiedAttacker
-        defender.changeThreshholdDefender(state); //This sets thresholdModifiedDefender
+        attacker.changeWitheringThreshholdAttacker(state); //This sets thresholdModifiedAttacker
+        defender.changeWitheringThreshholdDefender(state); //This sets thresholdModifiedDefender
         if(state.thresholdModifiedDefender>=0) {
-            attacker.modifyRawDamageAttacker(state); //Sets normal raw damage, based on strength and weapon damage, and then sets rawDamagemModifiedAttacker
-            defender.modifyRawDamageDefender(state); //this sets rawDamageModifiedDefender, and sets up the various soak values, so natural soak and armor soak.
+            attacker.modifyWitheringRawDamageAttacker(state); //Sets normal raw damage, based on strength and weapon damage, and then sets rawDamagemModifiedAttacker
+            defender.modifyWitheringRawDamageDefender(state); //this sets rawDamageModifiedDefender, and sets up the various soak values, so natural soak and armor soak.
             state.totalSoak = Math.max(state.defenderArmorSoak - ignoredArmorSoak, 0) + state.defenderNaturalSoak; //TODO: Check whether this is the actual soak formula.
             attacker.modifyTotalSoakAttacker(state); //This sets totalSoakmodifiedAttacker. Don't think this actually has support in the solar charmset, but giving opportunities to work with.
             defender.modifyTotalSoakDefender(state); // This sets totalSoakmodifiedDefender.
@@ -52,8 +52,8 @@ public class WitheringAttack implements Action{
             defender.declarePostSoakDefender(state); //sets postSoakSuccessesModifiedDefender
             DiceThrow droll=new DiceThrow(state.postSoakSuccessesModifiedDefender);
             state.damageRoll=droll;
-            attacker.modifyDamageRollAttacker(state); //sets damageRollmodifiedAttacker and damageRollvValuation
-            defender.modifyDamageRollDefender(state); //sets damageRollmodifiedDefender
+            attacker.modifyWitheringDamageRollAttacker(state); //sets damageRollmodifiedAttacker and damageRollvValuation
+            defender.modifyWitheringDamageRollDefender(state); //sets damageRollmodifiedDefender
             state.initiativeDamageDone=state.damageRollModifiedDefender.evaluateResults(state.damageRollValuation);
             attacker.modifyInitiativeDamageAttacker(state);
             defender.modifyInitiativeDamageDefender(state); //Since this is the last change of initiative, we can check whether the defender was crashed here.
@@ -61,8 +61,8 @@ public class WitheringAttack implements Action{
             defender.updateInitiativeDefender(state);//Here we should handle all the initiative changes respectively, with checking if people are crashed etc.
         }
         else{
-            attacker.failedAttackAttacker(state);
-            defender.failedAttackDefender(state);
+            attacker.failedWitheringAttackAttacker(state);
+            defender.failedWitheringAttackDefender(state);
         }
 
     }
