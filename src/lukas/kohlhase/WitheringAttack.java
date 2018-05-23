@@ -35,9 +35,9 @@ public class WitheringAttack implements Action{
         defender.declareWitheringDV(state); // Defender declares their dv against this specific attack. This sets both initialdv and changedDv
         DiceThrow attackRoll=new DiceThrow(state.changedAttackpool);
         state.initialAttackRoll=attackRoll;
-        attacker.modifyWitheringAttackRollAttacker(state); //This sets stuff like attackerModifiedAttackRoll and AttackerRollValuation
-        defender.modifyWitheringAttackRollDefender(state); //This sets defender defenderModifiedAttackRoll
-        state.attackRollSuccesses=state.defenderModifiedAttackRoll.evaluateResults(state.AttackerAttackRollValuation);
+        attacker.modifyWitheringAttackRollAttacker(state); //This sets stuff like modifiedAttackRollAttacker and AttackerRollValuation
+        defender.modifyWitheringAttackRollDefender(state); //This sets defender modifiedAttackRollDefender
+        state.attackRollSuccesses=state.modifiedAttackRollDefender.evaluateResults(state.AttackRollValuationAttacker);
         state.threshholdSuccesses=state.attackRollSuccesses-state.changedDv;
         attacker.changeWitheringThreshholdAttacker(state); //This sets thresholdModifiedAttacker
         defender.changeWitheringThreshholdDefender(state); //This sets thresholdModifiedDefender

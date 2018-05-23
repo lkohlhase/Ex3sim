@@ -310,13 +310,13 @@ public class FullCharacter implements CombatActor {
 
     @Override
     public void modifyWitheringAttackRollAttacker(AttackState x) {
-        x.attackerModifiedAttackRoll=new DiceThrow(x.initialAttackRoll);
-        x.AttackerAttackRollValuation=new Rollvaluation(); //Just the default rollvaluation that mortals use.
+        x.modifiedAttackRollAttacker =new DiceThrow(x.initialAttackRoll);
+        x.AttackRollValuationAttacker =new Rollvaluation(); //Just the default rollvaluation that mortals use.
     }
 
     @Override
     public void modifyWitheringAttackRollDefender(AttackState x) {
-        x.defenderModifiedAttackRoll=new DiceThrow(x.attackerModifiedAttackRoll);
+        x.modifiedAttackRollDefender =new DiceThrow(x.modifiedAttackRollAttacker);
     }
 
     @Override
@@ -411,5 +411,92 @@ public class FullCharacter implements CombatActor {
     @Override
     public void failedWitheringAttackDefender(AttackState x) {
         //Default response to opponent missing his attack is to LUL and be done with it.
+    }
+
+    @Override
+    public void declareDecisiveAttack(AttackState x) {
+        x.changedAttackpool=x.initialAttackpool; //Default is no change in attack pool
+    }
+
+    @Override
+    public void declareDecisiveDV(AttackState x) {//Exactly the same as withering dv
+        int parryDV=(attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl)/2)+temporaryDefenseBonus; //We round down, so just using integer division here is fine.
+        int dodgeDV=(attributes.Dexterity+abilities.Dodge)/2+temporaryDefenseBonus-armor.getMobilityPenalty();
+        x.initialDv=Math.max(parryDV,dodgeDV); //Choose the higher one always.
+        x.changedDv=x.initialDv;
+    }
+
+    @Override
+    public void modifyDecisiveAttackRollAttacker(AttackState x) {
+        x.modifiedAttackRollAttacker =new DiceThrow(x.initialAttackRoll);
+        x.AttackRollValuationAttacker =new Rollvaluation(); //Standard dice throw
+    }
+
+    @Override
+    public void modifyDecisiveAttackRollDefender(AttackState x) {
+        x.modifiedAttackRollDefender =x.modifiedAttackRollAttacker;
+    }
+
+    @Override
+    public void changeDecisiveThreshholdAttacker(AttackState x) {
+        x.thresholdModifiedAttacker=x.threshholdSuccesses;
+    }
+
+    @Override
+    public void changeDecisiveThreshholdDefender(AttackState x) {
+        x.thresholdModifiedDefender=x.thresholdModifiedAttacker;
+    }
+
+    @Override
+    public void modifyDecisiveHitAttacker(AttackState x) {
+        x.decisiveRawDamage=this.initiative;
+        x.decisiveRawDamageModifiedAttacker=x.decisiveRawDamage;
+    }
+
+    @Override
+    public void modifyDecisiveHitDefender(AttackState x) {
+        x.hardness=this.armor.getHardness();
+        x.decisiveRawDamageModifiedDefender=x.decisiveRawDamageModifiedAttacker;
+    }
+
+    @Override
+    public void modifyDecisiveDamageRollAttacker(AttackState x) {
+        x.damageRollModifiedAttacker=x.damageRoll;
+
+    }
+
+    @Override
+    public void modifyDecisiveDamageRollDefender(AttackState x) {
+        x.damageRollModifiedDefender=x.damageRollModifiedAttacker;
+    }
+
+    @Override
+    public void resetBaseInitiative(AttackState x) {
+        this.initiative=3;
+    }
+
+    @Override
+    public void modifyDecisiveDamageDoneAttacker(AttackState x) {
+        x.healthDamageDoneModifiedAttacker=x.healthDamageDone;
+    }
+
+    @Override
+    public void modifyDecisiveDamageDoneDefender(AttackState x) {
+        x.healthDamageDoneModifiedDefender=x.healthDamageDoneModifiedAttacker;
+    }
+
+    @Override
+    public void declareDecisivePostMissAttacker(AttackState x) {
+        if(this.initiative>11){
+            this.loseInitiative(2);
+        }
+        else{
+            this.loseInitiative(1);
+        }
+    }
+
+    @Override
+    public void declareDecisivePostMissDefender(AttackState x) {
+        //Do nothing
     }
 }

@@ -33,7 +33,7 @@ public class DecisiveAttack implements Action {
         state.initialAttackRoll=attackRoll;
         attacker.modifyDecisiveAttackRollAttacker(state);
         defender.modifyDecisiveAttackRollDefender(state);
-        state.attackRollSuccesses=state.defenderModifiedAttackRoll.evaluateResults(state.AttackerAttackRollValuation);
+        state.attackRollSuccesses=state.modifiedAttackRollDefender.evaluateResults(state.AttackRollValuationAttacker);
         state.threshholdSuccesses=state.attackRollSuccesses-state.changedDv;
         attacker.changeDecisiveThreshholdAttacker(state);
         defender.changeDecisiveThreshholdDefender(state);
@@ -43,6 +43,7 @@ public class DecisiveAttack implements Action {
             defender.modifyDecisiveHitDefender(state); //Set stuff like hardness, possibly perfect the attack or w/e.
             if (state.decisiveRawDamageModifiedDefender>=state.hardness){ //Attack does damage.
                 DiceThrow damageRoll=new DiceThrow(state.decisiveRawDamageModifiedDefender);
+                state.damageRoll=damageRoll;
                 attacker.modifyDecisiveDamageRollAttacker(state);
                 defender.modifyDecisiveDamageRollDefender(state);
                 int damagedone=state.damageRollModifiedDefender.evaluateResults(state.damageRollValuation);

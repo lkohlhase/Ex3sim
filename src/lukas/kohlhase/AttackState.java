@@ -9,10 +9,11 @@ public class AttackState {
     public int initialDv;
     public int changedAttackpool;
     public int changedDv;
-    public Rollvaluation AttackerAttackRollValuation;
+    public Rollvaluation AttackRollValuationAttacker;
     public DiceThrow initialAttackRoll;
-    public DiceThrow attackerModifiedAttackRoll;
-    public DiceThrow defenderModifiedAttackRoll;
+    public DiceThrow modifiedAttackRollAttacker;
+
+    public DiceThrow modifiedAttackRollDefender;
     public int attackRollSuccesses;
     public int threshholdSuccesses;
     public int thresholdModifiedAttacker;
