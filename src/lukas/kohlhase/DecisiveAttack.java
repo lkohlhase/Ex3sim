@@ -20,7 +20,7 @@ public class DecisiveAttack implements Action {
         attackInitiative=ini;
         damagetype=type;
     }
-    public void resolve2(){
+    public void resolve(){
         /*
         Same deal as with resolve2() in WitheringAttack, currently put in so that I can keep the old structure intact, and rebuild with
          */
@@ -61,7 +61,7 @@ public class DecisiveAttack implements Action {
         }
 
     }
-    public void resolve(){
+    public void resolve2(){
         System.out.println(attacker.getName()+" decisive attacked "+defender.getName());
         attackdice=attacker.declareDecisiveAttack();
         dv=defender.declareDecisiveDV(attackdice);

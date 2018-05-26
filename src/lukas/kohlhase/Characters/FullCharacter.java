@@ -1,7 +1,7 @@
 package lukas.kohlhase.Characters;
 
 import java.util.ArrayList;
-
+import java.util.UUID;
 import lukas.kohlhase.*;
 import lukas.kohlhase.Items.*;
 public class FullCharacter implements CombatActor {
@@ -12,16 +12,35 @@ public class FullCharacter implements CombatActor {
     int roundsInCrash=10; //Code for isn't crashed.
     int roundsSinceCrash=10; //Hasn't recently been crashed
     String name;
-    ArrayList<CombatActor> enemies=new ArrayList<>();
-    ArrayList<CombatActor> allies=new ArrayList<>();
-    ArrayList<MeleeWeapon> arnament=new ArrayList<>(); //TODO: Add unarmed attack that every fullcharacter always has.
+    ArrayList<CombatActor> enemies=new ArrayList<>(); //This is generated when we make the CombatScene.
+    ArrayList<CombatActor> allies=new ArrayList<>(); //Same here
+    ArrayList<MeleeWeapon> arnament=new ArrayList<>();
     Armor armor=new NoArmor(); //If we want a character to have armor, it needs to be explicity set. We can just replace this value with a proper armor.
     Attributes attributes;
     Abilities abilities;
     int temporaryDefenseBonus=0;
 
-    public FullCharacter() { //TODO: Add more Meat to this section, initializing with no skills etc.
+    public FullCharacter() {
         this.arnament.add(new Unarmed());
+        this.abilities= new Abilities();
+        this.attributes= new Attributes();
+        this.name=java.util.UUID.randomUUID().toString(); //This ensures uniqueness. Might just randomly generate a recognizable name though.
+        this.initiative=3;
+    }
+    public FullCharacter(String name){
+        this.arnament.add(new Unarmed());
+        this.abilities= new Abilities();
+        this.attributes= new Attributes();
+        this.name=name; //This ensures uniqueness. Might just randomly generate a recognizable name though.
+        this.initiative=3;
+    }
+
+    public FullCharacter(String name, Attributes attributes, Abilities abilities) {
+        this.arnament.add(new Unarmed());
+        this.name = name;
+        this.attributes = attributes;
+        this.abilities = abilities;
+        this.initiative=3;
     }
 
     public ArrayList<Action> generateMeleeAttacks() {

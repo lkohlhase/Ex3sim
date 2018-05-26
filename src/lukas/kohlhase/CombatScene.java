@@ -6,13 +6,21 @@ import java.util.*;
 public class CombatScene {
     Vector<CombatActor> participants;
     int currentround;
-    Vector<CombatActor> yetToAct =new Vector();
-    Vector<CombatActor> alreadyActed = new Vector();
-    public CombatScene(Vector<CombatActor> actors){
+    ArrayList<CombatActor> yetToAct =new ArrayList<>();
+    ArrayList<CombatActor> alreadyActed = new ArrayList<>();
+    public CombatScene(Vector<CombatActor> actors){ //Basic idea is free for all for now
         participants=actors;
         currentround=0;
+        for(CombatActor actor: actors){ //Initializing the enemies and allies of the characters.
+            ArrayList<CombatActor> enemies= (ArrayList)actors.clone(); //Need to check whether this works with a shallow copy, but it should, since we're not actually changing the actors.
+            enemies.remove(actor);
+            actor.setEnemies(enemies);
+            actor.setAllies(new ArrayList<CombatActor>());//Curently not modelling allies
+        }
         joinBattle();
+
     }
+
     public void joinBattle(){
         for (CombatActor i: participants){
             int joinbattlepool=i.declareJoinBattle();

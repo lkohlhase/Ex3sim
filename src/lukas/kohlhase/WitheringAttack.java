@@ -22,7 +22,7 @@ public class WitheringAttack implements Action{
         defender=B;
         overwhelming=ov;
     }
-    public void resolve2(){
+    public void resolve(){
         /*
         This will eventually replace resolve(), and is being reworked to work with the attackstate idea of things.
          */
@@ -66,7 +66,7 @@ public class WitheringAttack implements Action{
         }
 
     }
-    public void resolve(){
+    public void resolve2(){
         /*
         First implementatinon of resolving a withering attack.
          */
