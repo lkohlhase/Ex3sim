@@ -1,4 +1,4 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Dice;
 
 public class DecisiveValuation extends Rollvaluation {
     /*

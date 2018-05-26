@@ -1,5 +1,8 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Actions;
 
+import lukas.kohlhase.*;
+import lukas.kohlhase.Dice.DecisiveValuation;
+import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Items.MeleeWeapon;
 
 public class DecisiveAttack implements Action {
@@ -8,6 +11,7 @@ public class DecisiveAttack implements Action {
     damageType damagetype;
     public int baseAttackdice;
     public MeleeWeapon weapon;
+    public CharmCost cost;
     public DecisiveAttack(CombatActor A,CombatActor B){
         attacker=A;
         defender=B;

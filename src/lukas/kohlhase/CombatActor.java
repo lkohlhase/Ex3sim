@@ -1,5 +1,7 @@
 package lukas.kohlhase;
 
+import lukas.kohlhase.Actions.Action;
+
 import java.util.ArrayList;
 
 public interface CombatActor extends Actor {

@@ -1,5 +1,8 @@
 package lukas.kohlhase;
 
+import lukas.kohlhase.Dice.DiceThrow;
+import lukas.kohlhase.Dice.Rollvaluation;
+
 public class AttackState {
     /*
     The intention is for instances of this class to be passed along by attacker and defender, and being changed constantly. Contains all the relevant information about an attack, so taht people can react to it.

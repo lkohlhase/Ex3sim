@@ -1,4 +1,4 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Dice;
 import java.util.*;
 public class DiceThrow {
     /*

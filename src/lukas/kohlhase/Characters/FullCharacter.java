@@ -1,8 +1,13 @@
 package lukas.kohlhase.Characters;
 
 import java.util.ArrayList;
-import java.util.UUID;
+
 import lukas.kohlhase.*;
+import lukas.kohlhase.Actions.Action;
+import lukas.kohlhase.Actions.DecisiveAttack;
+import lukas.kohlhase.Actions.WitheringAttack;
+import lukas.kohlhase.Dice.DiceThrow;
+import lukas.kohlhase.Dice.Rollvaluation;
 import lukas.kohlhase.Items.*;
 public class FullCharacter implements CombatActor {
     /*
@@ -53,21 +58,23 @@ public class FullCharacter implements CombatActor {
                 for (String possibility : weapon.usablewith) {
 
                     if (weapon.usablewith.contains(MeleeWeapon.WeaponTags.MELEE) && !possibility.equals("IMPROVISEDBRAWL")) { //If the weapon can be used with Melee, then make melee versions of every attack.
-                        WitheringAttack temp = new WitheringAttack(this, enemy);
-                        temp.baseAccuracy = weapon.getAccuracy();
-                        temp.baseAttackdice = this.attributes.Dexterity + this.abilities.Melee;
-                        temp.cost.TempDefence = weapon.getDefense();
-                        temp.weapon=weapon;
+                        WitheringAttack tempWithering = new WitheringAttack(this, enemy);
+
+
+                        tempWithering.baseAccuracy = weapon.getAccuracy();
+                        tempWithering.baseAttackdice = this.attributes.Dexterity + this.abilities.Melee;
+                        tempWithering.cost.TempDefence = weapon.getDefense();
+                        tempWithering.weapon=weapon;
                         switch (possibility) {
                             case "BRAWL":
                                 break;
                             case "CHOPPING":
-                                temp.cost.TempDefence--;
+                                tempWithering.cost.TempDefence--;
                             case "DISARMING":
                                 //TODO: Implement when we do disarming stuff. Essentially generate a completely new disarming attack with the weapon here.
                                 break;
                             case "IMPROVISEDMELEE":
-                                temp.cost.Initiative += 1;
+                                tempWithering.cost.Initiative += 1;
                             case "GRAPPLING":
                                 break; //TODO: Implement when we do grappling stuff (aka never)
                             case "MELEE":
@@ -75,31 +82,31 @@ public class FullCharacter implements CombatActor {
                             case "MARTIAL":
                                 break; //Implement when we actually include martial arts
                             case "PIERCING":
-                                temp.ignoredArmorSoak = 4;
-                                temp.cost.Initiative += 1;
+                                tempWithering.ignoredArmorSoak = 4;
+                                tempWithering.cost.Initiative += 1;
                             case "SMASHING":
-                                temp.cost.TempDefence -= 2;
-                                temp.cost.Initiative += 2;
+                                tempWithering.cost.TempDefence -= 2;
+                                tempWithering.cost.Initiative += 2;
                             case "THROWN":
                                 break; //TODO: Implement whenever we get around to doing this. Not sure we'll ever add this tag. Probably will just manually add Thrown weapons and add stuff here.
                         }
-                        possibleattacks.add(temp);
+                        possibleattacks.add(tempWithering);
                     }
                     if (weapon.usablewith.contains(MeleeWeapon.WeaponTags.BRAWL) && !possibility.equals("IMPROVISEDMELEE")) { //If the weapon can be used with Melee, then make BRAWL versions of every attack.
-                        WitheringAttack temp = new WitheringAttack(this, enemy);
-                        temp.baseAccuracy = weapon.getAccuracy();
-                        temp.baseAttackdice = this.attributes.Dexterity + this.abilities.Brawl; //TODO: Implement specialties.
-                        temp.weapon=weapon;
+                        WitheringAttack tempWitheringB = new WitheringAttack(this, enemy);
+                        tempWitheringB.baseAccuracy = weapon.getAccuracy();
+                        tempWitheringB.baseAttackdice = this.attributes.Dexterity + this.abilities.Brawl; //TODO: Implement specialties.
+                        tempWitheringB.weapon=weapon;
                         switch (possibility) {
                             case "BRAWL":
                                 break;
                             case "CHOPPING":
-                                temp.cost.TempDefence--;
+                                tempWitheringB.cost.TempDefence--;
                             case "DISARMING":
                                 //TODO: Implement when we do disarming stuff. Essentially generate a completely new disarming attack with the weapon here.
                                 break;
                             case "IMPROVISEDBRAWL":
-                                temp.cost.Initiative += 1;
+                                tempWitheringB.cost.Initiative += 1;
                             case "GRAPPLING":
                                 break; //TODO: Implement when we do grappling stuff (aka never)
                             case "MELEE":
@@ -107,19 +114,22 @@ public class FullCharacter implements CombatActor {
                             case "MARTIAL":
                                 break; //Implement when we actually include martial arts
                             case "PIERCING":
-                                temp.ignoredArmorSoak = 4;
-                                temp.cost.Initiative += 1;
+                                tempWitheringB.ignoredArmorSoak = 4;
+                                tempWitheringB.cost.Initiative += 1;
                             case "SMASHING":
-                                temp.cost.TempDefence -= 2;
-                                temp.cost.Initiative += 2;
+                                tempWitheringB.cost.TempDefence -= 2;
+                                tempWitheringB.cost.Initiative += 2;
                             case "THROWN":
                                 break; //TODO: Implement whenever we get around to doing this. Not sure we'll ever add this tag. Probably will just manually add Thrown weapons and add stuff here.
                         }
-
-                        //TODO: Generate decisive attacks here as well.
+                    possibleattacks.add(tempWitheringB);
 
                     }
+
+
                 }
+            DecisiveAttack murder=new DecisiveAttack(this,enemy,this.initiative,weapon.damagetype); //There is only one possible decisive attack with every weapon.
+            possibleattacks.add(murder);
             }
 
         }
@@ -274,6 +284,7 @@ public class FullCharacter implements CombatActor {
 
     @Override
     public Action chooseAction(CombatActor[] actors) {
+        generateMeleeAttacks();
         return null;
     }
 

@@ -1,6 +1,9 @@
 package lukas.kohlhase.Characters;
 
 import lukas.kohlhase.*;
+import lukas.kohlhase.Actions.Action;
+import lukas.kohlhase.Actions.DoNothing;
+import lukas.kohlhase.Actions.WitheringAttack;
 
 import java.util.ArrayList;
 

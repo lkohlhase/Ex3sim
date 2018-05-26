@@ -1,4 +1,6 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Actions;
+
+import lukas.kohlhase.Actions.Action;
 
 public class DoNothing implements Action {
     public void resolve(){

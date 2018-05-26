@@ -1,5 +1,7 @@
 package lukas.kohlhase;
+import lukas.kohlhase.Actions.Action;
 import lukas.kohlhase.Characters.ErrorActor;
+import lukas.kohlhase.Dice.DiceThrow;
 
 import java.util.*;
 
