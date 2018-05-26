@@ -162,6 +162,81 @@ public class ErrorActor implements CombatActor {
     }
 
     @Override
+    public void declareDecisiveAttack(AttackState x) {
+
+    }
+
+    @Override
+    public void declareDecisiveDV(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveAttackRollAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveAttackRollDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void changeDecisiveThreshholdAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void changeDecisiveThreshholdDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveHitAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveHitDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveDamageRollAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveDamageRollDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void resetBaseInitiative(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveDamageDoneAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void modifyDecisiveDamageDoneDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void declareDecisivePostMissAttacker(AttackState x) {
+
+    }
+
+    @Override
+    public void declareDecisivePostMissDefender(AttackState x) {
+
+    }
+
+    @Override
     public void declareWitheringAttack(AttackState x) {
 
     }

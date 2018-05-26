@@ -5,7 +5,7 @@ import lukas.kohlhase.Dice.DecisiveValuation;
 import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Items.MeleeWeapon;
 
-public class DecisiveAttack implements Action {
+public class DecisiveAttack implements Attack {
     int attackInitiative,attackdice,dv,thresholdSuccesses,rawdamage,hardness;
     CombatActor attacker,defender;
     damageType damagetype;
@@ -93,5 +93,11 @@ public class DecisiveAttack implements Action {
                 attacker.setInitiative(3);
             }
         }
+    }
+    public Boolean isWhithering(){
+        return false;
+    }
+    public Boolean isDecisive(){
+        return true;
     }
 }

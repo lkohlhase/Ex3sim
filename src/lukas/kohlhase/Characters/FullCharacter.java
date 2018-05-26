@@ -3,9 +3,7 @@ package lukas.kohlhase.Characters;
 import java.util.ArrayList;
 
 import lukas.kohlhase.*;
-import lukas.kohlhase.Actions.Action;
-import lukas.kohlhase.Actions.DecisiveAttack;
-import lukas.kohlhase.Actions.WitheringAttack;
+import lukas.kohlhase.Actions.*;
 import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Dice.Rollvaluation;
 import lukas.kohlhase.Items.*;
@@ -48,11 +46,11 @@ public class FullCharacter implements CombatActor {
         this.initiative=3;
     }
 
-    public ArrayList<Action> generateMeleeAttacks() {
+    public ArrayList<Attack> generateMeleeAttacks() {
         /*
         We generate basic attacks from the melee weapons that we have available.
          */
-        ArrayList<Action> possibleattacks = new ArrayList();
+        ArrayList<Attack> possibleattacks = new ArrayList();
         for (CombatActor enemy : enemies) { //Generate an attack option for every weapon and every enemy you have.
             for (MeleeWeapon weapon : arnament) {
                 for (String possibility : weapon.usablewith) {
@@ -283,9 +281,8 @@ public class FullCharacter implements CombatActor {
     }
 
     @Override
-    public Action chooseAction(CombatActor[] actors) {
-        generateMeleeAttacks();
-        return null;
+    public Action chooseAction(CombatActor[] actors) { //FullCharacter is really only an interface that we want to inherit from, so it shouldn't actually be used for choosing actions.
+        return new DoNothing();
     }
 
     @Override
