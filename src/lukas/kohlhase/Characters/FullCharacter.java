@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import lukas.kohlhase.*;
 import lukas.kohlhase.Actions.*;
+import lukas.kohlhase.Dice.DecisiveValuation;
 import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Dice.Rollvaluation;
 import lukas.kohlhase.Items.*;
@@ -131,6 +132,13 @@ public class FullCharacter implements CombatActor {
 
                 }
             DecisiveAttack murder=new DecisiveAttack(this,enemy,this.initiative,weapon.damagetype); //There is only one possible decisive attack with every weapon.
+            if (weapon.usablewith.contains("MELEE")){
+                murder.baseAttackdice=this.abilities.Melee+this.attributes.Dexterity-this.health.woundpenalty();
+                }
+            else if (weapon.usablewith.contains("BRAWL")){
+                murder.baseAttackdice=this.abilities.Brawl+this.attributes.Dexterity-this.health.woundpenalty();
+
+            }
             possibleattacks.add(murder);
             }
 
@@ -432,6 +440,7 @@ public class FullCharacter implements CombatActor {
     @Override
     public void modifyDecisiveDamageRollAttacker(AttackState x) {
         x.damageRollModifiedAttacker=x.damageRoll;
+        x.damageRollValuation=new DecisiveValuation();
 
     }
 

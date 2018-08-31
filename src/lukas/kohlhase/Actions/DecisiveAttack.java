@@ -6,7 +6,7 @@ import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Items.MeleeWeapon;
 
 public class DecisiveAttack implements Attack {
-    int attackInitiative,attackdice,dv,thresholdSuccesses,rawdamage,hardness;
+    int attackInitiative;
     CombatActor attacker,defender;
     damageType damagetype;
     public int baseAttackdice;
@@ -43,6 +43,7 @@ public class DecisiveAttack implements Attack {
         attacker.changeDecisiveThreshholdAttacker(state);
         defender.changeDecisiveThreshholdDefender(state);
         if(state.thresholdModifiedDefender>=0){//Decisive Attack hit
+            System.out.println(attacker.getName()+" hits "+defender.getName());
             state.decisiveRawDamage=attacker.getInitiative();
             attacker.modifyDecisiveHitAttacker(state); //Maybe it's possible to do stuff when you've hit the target. Haven't checked charms yet. Set Initiative for damageRoll
             defender.modifyDecisiveHitDefender(state); //Set stuff like hardness, possibly perfect the attack or w/e.
@@ -61,6 +62,7 @@ public class DecisiveAttack implements Attack {
 
         }
         else {
+            System.out.println(attacker.getName()+" has missed a decisive attack on "+defender.getName());
             attacker.declareDecisivePostMissAttacker(state);//Handles the attacker losing initiative for a miss.
             defender.declareDecisivePostMissDefender(state);
         }
