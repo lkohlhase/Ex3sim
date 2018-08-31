@@ -38,6 +38,7 @@ public class DecisiveAttack implements Attack {
         attacker.modifyDecisiveAttackRollAttacker(state);
         defender.modifyDecisiveAttackRollDefender(state);
         state.attackRollSuccesses=state.modifiedAttackRollDefender.evaluateResults(state.AttackRollValuationAttacker);
+        System.out.println(attacker.getName()+" rolls "+state.changedAttackpool+" dice against "+defender.getName()+"'s dv of "+state.changedDv+" achieving "+state.attackRollSuccesses+" successes.");
         state.threshholdSuccesses=state.attackRollSuccesses-state.changedDv;
         attacker.changeDecisiveThreshholdAttacker(state);
         defender.changeDecisiveThreshholdDefender(state);

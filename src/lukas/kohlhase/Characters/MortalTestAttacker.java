@@ -7,8 +7,11 @@ import lukas.kohlhase.CombatActor;
 import java.util.ArrayList;
 
 public class MortalTestAttacker extends FullCharacter {
+    public MortalTestAttacker() {
+        this.name="MortalTestAttacker"+java.util.UUID.randomUUID().toString();
+    }
+
     public Action chooseAction(CombatActor[] actors) {
-        generateMeleeAttacks();
         ArrayList<Attack> possibleAttacks=this.generateMeleeAttacks();
         for (Attack attack: possibleAttacks){
             if(this.getInitiative()>=17){

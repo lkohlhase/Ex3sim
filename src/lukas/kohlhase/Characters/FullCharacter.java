@@ -24,14 +24,14 @@ public class FullCharacter implements CombatActor {
     int temporaryDefenseBonus=0;
 
     public FullCharacter() {
-        this.arnament.add(new Unarmed());
+        this.arnament.add(new MeleeWeaponFactory().Unarmed());
         this.abilities= new Abilities();
         this.attributes= new Attributes();
-        this.name=java.util.UUID.randomUUID().toString(); //This ensures uniqueness. Might just randomly generate a recognizable name though.
+        this.name="FullCharacter"+java.util.UUID.randomUUID().toString(); //This ensures uniqueness. Might just randomly generate a recognizable name though.
         this.initiative=3;
     }
     public FullCharacter(String name){
-        this.arnament.add(new Unarmed());
+        this.arnament.add(new MeleeWeaponFactory().Unarmed());
         this.abilities= new Abilities();
         this.attributes= new Attributes();
         this.name=name; //This ensures uniqueness. Might just randomly generate a recognizable name though.
@@ -39,7 +39,7 @@ public class FullCharacter implements CombatActor {
     }
 
     public FullCharacter(String name, Attributes attributes, Abilities abilities) {
-        this.arnament.add(new Unarmed());
+        this.arnament.add(new MeleeWeaponFactory().Unarmed());
         this.name = name;
         this.attributes = attributes;
         this.abilities = abilities;
@@ -55,7 +55,7 @@ public class FullCharacter implements CombatActor {
             for (MeleeWeapon weapon : arnament) {
                 for (String possibility : weapon.usablewith) {
 
-                    if (weapon.usablewith.contains(MeleeWeapon.WeaponTags.MELEE) && !possibility.equals("IMPROVISEDBRAWL")) { //If the weapon can be used with Melee, then make melee versions of every attack.
+                    if (weapon.usablewith.contains("MELEE") && !possibility.equals("IMPROVISEDBRAWL")) { //If the weapon can be used with Melee, then make melee versions of every attack.
                         WitheringAttack tempWithering = new WitheringAttack(this, enemy);
 
 
@@ -90,7 +90,7 @@ public class FullCharacter implements CombatActor {
                         }
                         possibleattacks.add(tempWithering);
                     }
-                    if (weapon.usablewith.contains(MeleeWeapon.WeaponTags.BRAWL) && !possibility.equals("IMPROVISEDMELEE")) { //If the weapon can be used with Melee, then make BRAWL versions of every attack.
+                    if (weapon.usablewith.contains("BRAWL") && !possibility.equals("IMPROVISEDMELEE")) { //If the weapon can be used with Melee, then make BRAWL versions of every attack.
                         WitheringAttack tempWitheringB = new WitheringAttack(this, enemy);
                         tempWitheringB.baseAccuracy = weapon.getAccuracy();
                         tempWitheringB.baseAttackdice = this.attributes.Dexterity + this.abilities.Brawl; //TODO: Implement specialties.
@@ -140,7 +140,7 @@ public class FullCharacter implements CombatActor {
             this.gainInitiative(x);
         }
         else {
-            this.loseInitiative(x);
+            this.loseInitiative(-x);
         }
     }
     public void gainInitiative(int x){
@@ -161,15 +161,7 @@ public class FullCharacter implements CombatActor {
             System.out.println("Attempting to lose a negative amount of initiative. Please fix");
         }
         else {
-            if(x>initiative && roundsInCrash>=10){ //Person wasn't in crash before, and was just crashed
-                roundsInCrash=1;
                 initiative-=x;
-                roundsSinceCrash=-5;
-            }
-            else {//Just standard initiative loss
-                initiative-=x;
-
-            }
         }
     }
 
@@ -241,23 +233,28 @@ public class FullCharacter implements CombatActor {
     }
 
     @Override
-    public boolean crashbreakable() {
-        return false;
+    public boolean crashbreakable() { //TODO: Implement this properly
+        if (roundsSinceCrash<=3) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override
     public int declareJoinBattle() {
-        return 0;
+        return this.abilities.Awareness+this.attributes.Wits;
     }
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public void setName(String a) {
-
+        this.name=a;
     }
 
     @Override
@@ -409,13 +406,13 @@ public class FullCharacter implements CombatActor {
     public void modifyInitiativeDamageDefender(AttackState x) {
         x.initiativeDamageDoneModifiedDefender=x.initiativeDamageDoneModifiedAttacker;
         x.defenderCrashed= (x.initiativeDamageDoneModifiedDefender>initiative && this.crashbreakable());
-
     }
 
     @Override
     public void updateInitiativeAttacker(AttackState x) {
         this.gainInitiative(1); //Opponent was hit
         if(x.defenderCrashed){
+            System.out.println(this.getName()+" crashed his opponent.");
             this.gainInitiative(5);
         }
         this.changeInitiative(x.initiativeDamageDoneModifiedDefender);
@@ -426,8 +423,8 @@ public class FullCharacter implements CombatActor {
     @Override
     public void updateInitiativeDefender(AttackState x) {
         if (x.defenderCrashed)
-            this.gainInitiative(5);
-        this.changeInitiative(x.initiativeDamageDoneModifiedDefender);
+            this.loseInitiative(5);
+        this.changeInitiative(-x.initiativeDamageDoneModifiedDefender);
     }
 
     @Override

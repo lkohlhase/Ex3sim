@@ -5,16 +5,16 @@ public class Attributes {
     public int Charisma,Manipulation, Appearance;
     public int Wits,Intelligence,Perception;
     public Attributes() {
-        Strength=0;
-        Dexterity=0;
-        Stamina=0;
+        Strength=1;
+        Dexterity=1;
+        Stamina=1;
 
-        Charisma=0;
-        Manipulation=0;
-        Appearance=0;
+        Charisma=1;
+        Manipulation=1;
+        Appearance=1;
 
-        Wits=0;
-        Intelligence=0;
-        Perception=0;
+        Wits=1;
+        Intelligence=1;
+        Perception=1;
     }
 }

@@ -6,11 +6,11 @@ import lukas.kohlhase.Dice.DiceThrow;
 import java.util.*;
 
 public class CombatScene {
-    Vector<CombatActor> participants;
+    ArrayList<CombatActor> participants;
     int currentround;
     ArrayList<CombatActor> yetToAct =new ArrayList<>();
     ArrayList<CombatActor> alreadyActed = new ArrayList<>();
-    public CombatScene(Vector<CombatActor> actors){ //Basic idea is free for all for now
+    public CombatScene(ArrayList<CombatActor> actors){ //Basic idea is free for all for now
         participants=actors;
         currentround=0;
         for(CombatActor actor: actors){ //Initializing the enemies and allies of the characters.
@@ -28,7 +28,7 @@ public class CombatScene {
             int joinbattlepool=i.declareJoinBattle();
             DiceThrow joinBattleRoll=new DiceThrow(joinbattlepool);
             int joinbattleresult=joinBattleRoll.evaluateResults();
-            i.setInitiative(joinbattleresult);
+            i.setInitiative(joinbattleresult+3);
             yetToAct.add(i);
             System.out.println(i.getName()+" rolled Join Battle with "+joinbattlepool+" dice and got "+joinbattleresult+" successes.");
 
@@ -70,6 +70,8 @@ public class CombatScene {
         for (CombatActor i: participants){
             System.out.println(i.getName()+": "+i.getInitiative()+" Initiative");
         }
+        System.out.println("Round "+currentround+" is ending. ");
+        System.out.println("===================================================================================");
 
     }
 
@@ -91,7 +93,7 @@ public class CombatScene {
     }
 
     public boolean combatOver(){
-        if(currentround >3){
+        if(currentround >15){
             return true;
         }
         if (participants.size()<=1){
