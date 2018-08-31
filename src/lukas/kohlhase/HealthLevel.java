@@ -5,10 +5,16 @@ public class HealthLevel {
     Vector<damageType> tempminus0,tempminus1,tempminus2,tempminus4;
 
     public HealthLevel(int zeros, int ones,int twos,int fours, int incapd){
-        Vector<damageType> tempminus0=new Vector<damageType>(0);
-        Vector<damageType> tempminus1=new Vector<damageType>(0);
-        Vector<damageType> tempminus2=new Vector<damageType>(0);
-        Vector<damageType> tempminus4=new Vector<damageType>(0);
+        tempminus0=new Vector<damageType>(0);
+        tempminus1=new Vector<damageType>(0);
+        tempminus2=new Vector<damageType>(0);
+        tempminus4=new Vector<damageType>(0);
+        minus0=new Vector<damageType>();
+        minus1=new Vector<damageType>();
+        minus2=new Vector<damageType>();
+        minus4=new Vector<damageType>();
+        incap=new Vector<damageType>();
+
         for (int i=0;i<zeros;i++){
             minus0.add(damageType.UNDAMAGED);
         }
@@ -19,7 +25,7 @@ public class HealthLevel {
             minus2.add(damageType.UNDAMAGED);
         }
         for (int i=0;i<fours;i++){
-            minus2.add(damageType.UNDAMAGED);
+            minus4.add(damageType.UNDAMAGED);
         }
         for (int i=0;i<incapd;i++){
             incap.add(damageType.UNDAMAGED);
