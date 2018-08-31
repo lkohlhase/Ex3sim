@@ -75,39 +75,7 @@ public class WitheringAttack implements Attack{
         }
 
     }
-    public void resolve2(){
-        /*
-        First implementatinon of resolving a withering attack.
-         */
-        System.out.println(attacker.getName()+" withering attacked "+defender.getName());
-        attackdice=attacker.declareWitheringAttack();
-        dv=defender.declareWitheringDV(attackdice);
-        DiceThrow attackRoll=new DiceThrow(attackdice);
-        thresholdSuccesses=attackRoll.evaluateResults()-dv;
-        System.out.println(attacker.getName()+" rolled "+(thresholdSuccesses+dv)+" successes on "+attackdice+" dice versus "+defender.getName()+"'s DV of "+dv);
-        if (thresholdSuccesses<0){
 
-            Action newaction=attacker.declareWitheringPostMiss();
-            newaction.resolve();
-        }
-        else {
-            attacker.gainInitiative(1);
-            rawdamage=attacker.declareWitheringPostHit(thresholdSuccesses);
-            defsoak=defender.declareSoak(rawdamage);
-            postsoakdice=attacker.declarePostSoakAttacker(rawdamage-defsoak);
-            System.out.println(defender.getName()+"'s Soak of "+defsoak+" reduced the rawdamage from "+rawdamage+" to "+postsoakdice);
-            int postsoakdice2=java.lang.Math.max(defender.declarePostSoakDefender(postsoakdice),overwhelming);
-
-            DiceThrow damageRoll=new DiceThrow(postsoakdice2);
-            int initiativechange=damageRoll.evaluateResults();
-            System.out.println(attacker.getName()+" rolled "+initiativechange+" successes on "+postsoakdice2+" damageType dice.");
-            if (initiativechange>defender.getInitiative() && defender.crashbreakable()){ // attacker crashed defender
-                attacker.gainInitiative(5);
-            }
-            attacker.gainInitiative(initiativechange);
-            defender.loseInitiative(initiativechange);
-        }
-    }
     public Boolean isWhithering(){
         return true;
     }
