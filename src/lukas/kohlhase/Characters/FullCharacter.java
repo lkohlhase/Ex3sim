@@ -19,7 +19,7 @@ public class FullCharacter implements CombatActor {
     ArrayList<CombatActor> enemies=new ArrayList<>(); //This is generated when we make the CombatScene.
     ArrayList<CombatActor> allies=new ArrayList<>(); //Same here
     ArrayList<MeleeWeapon> arnament=new ArrayList<>();
-    Armor armor=new NoArmor(); //If we want a character to have armor, it needs to be explicity set. We can just replace this value with a proper armor.
+    Armor armor=new NoArmor(); //If we want a character to have armor, it needs to be explicitly set. We can just replace this value with a proper armor.
     Attributes attributes;
     Abilities abilities;
     int temporaryDefenseBonus=0;
@@ -139,6 +139,7 @@ public class FullCharacter implements CombatActor {
                 murder.baseAttackdice=this.abilities.Brawl+this.attributes.Dexterity-this.health.woundpenalty();
 
             }
+            murder.weapon=weapon;
             possibleattacks.add(murder);
             }
 

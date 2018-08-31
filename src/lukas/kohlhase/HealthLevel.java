@@ -43,13 +43,10 @@ public class HealthLevel {
                 tempminus0.set(tempminus0.indexOf(damageType.UNDAMAGED),type);
             }
             else if (minus0.contains(damageType.UNDAMAGED)){
-                tempminus0.set(minus0.indexOf(damageType.UNDAMAGED),type);
+                minus0.set(minus0.indexOf(damageType.UNDAMAGED),type);
             }
             else if (tempminus1.contains(damageType.UNDAMAGED)){
-                tempminus0.set(tempminus1.indexOf(damageType.UNDAMAGED),type);
-            }
-            else if (minus0.contains(damageType.UNDAMAGED)){
-                tempminus0.set(tempminus0.indexOf(damageType.UNDAMAGED),type);
+                tempminus1.set(tempminus1.indexOf(damageType.UNDAMAGED),type);
             }
             else if (minus1.contains(damageType.UNDAMAGED)){
                 minus1.set(minus1.indexOf(damageType.UNDAMAGED),type);
@@ -57,6 +54,7 @@ public class HealthLevel {
             else if (tempminus2.contains(damageType.UNDAMAGED)){
                 tempminus2.set(tempminus2.indexOf(damageType.UNDAMAGED),type);
             }
+
             else if (minus2.contains(damageType.UNDAMAGED)){
                 minus2.set(minus2.indexOf(damageType.UNDAMAGED),type);
             }
@@ -87,5 +85,36 @@ public class HealthLevel {
         else {
             return 0;
         }
+    }
+    public void print(){
+        System.out.print("-0:");
+        printdamage(minus0);
+        System.out.print("-1:");
+        printdamage(minus1);
+        System.out.print("-2:");
+        printdamage(minus2);
+        System.out.print("-4:");
+        printdamage(minus4);
+        if (incaped()){
+            System.out.println("incapacitated/dead");
+        }
+    }
+
+    private void printdamage(Vector<damageType> a) {
+        for (damageType box: a){
+            if(box == damageType.UNDAMAGED){
+                System.out.print("0");
+            }
+            else if(box == damageType.LETHAL){
+                System.out.print("L");
+            }
+            else if (box == damageType.BASHING){
+                System.out.print('B');
+            }
+            else if (box==damageType.AGGRAVATED){
+                System.out.print('A');
+            }
+
+        }System.out.println();
     }
 }

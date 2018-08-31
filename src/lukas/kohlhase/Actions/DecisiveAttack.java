@@ -47,16 +47,22 @@ public class DecisiveAttack implements Attack {
             state.decisiveRawDamage=attacker.getInitiative();
             attacker.modifyDecisiveHitAttacker(state); //Maybe it's possible to do stuff when you've hit the target. Haven't checked charms yet. Set Initiative for damageRoll
             defender.modifyDecisiveHitDefender(state); //Set stuff like hardness, possibly perfect the attack or w/e.
-            if (state.decisiveRawDamageModifiedDefender>=state.hardness){ //Attack does damage.
+            if (state.decisiveRawDamageModifiedDefender>=state.hardness){ //Attack does damage
                 DiceThrow damageRoll=new DiceThrow(state.decisiveRawDamageModifiedDefender);
                 state.damageRoll=damageRoll;
                 attacker.modifyDecisiveDamageRollAttacker(state);
                 defender.modifyDecisiveDamageRollDefender(state);
                 int damagedone=state.damageRollModifiedDefender.evaluateResults(state.damageRollValuation);
+                System.out.println(attacker.getName()+" rolled "+state.decisiveRawDamageModifiedDefender+" dice and had "+damagedone+" successes.");
                 state.healthDamageDone=damagedone;
                 attacker.modifyDecisiveDamageDoneAttacker(state);
                 defender.modifyDecisiveDamageDoneDefender(state);
                 defender.takeDamage(state.healthDamageDoneModifiedDefender,weapon.damagetype);
+                System.out.println("After the attack "+defender.getName()+" has the following healthlevels");
+                defender.getHealth().print();
+            }
+            else {
+                System.out.println("Attack does no damage, since the hardness was not overcome.");
             }
             attacker.resetBaseInitiative(state);
 
