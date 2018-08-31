@@ -15,24 +15,11 @@ public class ErrorActor implements CombatActor {
         return null;
     }
 
-    @Override
-    public Action declareWitheringPostMiss() {
-        return null;
-    }
+
 
     @Override
     public boolean crashbreakable() {
         return false;
-    }
-
-    @Override
-    public int declareWitheringAttack() {
-        return 0;
-    }
-
-    @Override
-    public int declareWitheringDV(int x) {
-        return 0;
     }
 
     @Override
@@ -41,24 +28,11 @@ public class ErrorActor implements CombatActor {
     }
 
     @Override
-    public int declareWitheringPostHit(int thresholdsuccesses) {
+    public int declareWitheringAttack() {
         return 0;
     }
 
-    @Override
-    public int declarePostSoakAttacker(int postsoaksuccesses) {
-        return 0;
-    }
 
-    @Override
-    public int declarePostSoakDefender(int postsoaksuccesses) {
-        return 0;
-    }
-
-    @Override
-    public int declareSoak(int thresholdsuccesses) {
-        return 0;
-    }
 
     @Override
     public int getInitiative() {
@@ -141,25 +115,6 @@ public class ErrorActor implements CombatActor {
 
     }
 
-    @Override
-    public Action declareDecisivePostMiss() {
-        return new DoNothing();
-    }
-
-    @Override
-    public int declareDecisiveAttack() {
-        return 0;
-    }
-
-    @Override
-    public int declareDecisiveDV(int x) {
-        return 0;
-    }
-
-    @Override
-    public int declareDecisivePostHit(int x,int y) {
-        return 0;
-    }
 
     @Override
     public void declareDecisiveAttack(AttackState x) {
@@ -339,11 +294,6 @@ public class ErrorActor implements CombatActor {
     @Override
     public HealthLevel getHealth() {
         return null;
-    }
-
-    @Override
-    public int declareHardness() {
-        return 0;
     }
 
     @Override

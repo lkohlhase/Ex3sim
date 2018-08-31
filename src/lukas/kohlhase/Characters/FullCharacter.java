@@ -269,7 +269,7 @@ public class FullCharacter implements CombatActor {
     public void declareWitheringAttack(AttackState x) {
         x.changedAttackpool=x.initialAttackpool;
     }
-
+//TODO: Add woundpenalty to calculations here.
     @Override
     public void declareWitheringDV(AttackState x) {
         int parryDV=(attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl)/2)+temporaryDefenseBonus; //We round down, so just using integer division here is fine.
