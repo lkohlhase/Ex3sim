@@ -5,7 +5,7 @@ public class HealthLevel {
     Vector<damageType> tempminus0,tempminus1,tempminus2,tempminus4;
 
     public HealthLevel(int zeros, int ones,int twos,int fours, int incapd){
-        tempminus0=new Vector<damageType>(0);
+        tempminus0= new Vector<>(0);
         tempminus1=new Vector<damageType>(0);
         tempminus2=new Vector<damageType>(0);
         tempminus4=new Vector<damageType>(0);

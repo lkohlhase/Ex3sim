@@ -22,7 +22,6 @@ public class Abilities { //TODO: Implement Specialties, if we can be bothered.
         Medicine = 0;
         Investigation = 0;
         Occult = 0;
-        Lore = 0;
         Stealth = 0;
         Athletics = 0;
         Larceny = 0;

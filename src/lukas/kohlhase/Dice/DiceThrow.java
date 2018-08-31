@@ -42,9 +42,8 @@ public class DiceThrow {
     public int evaluateResults(Rollvaluation d){
         int successcount=0;
         int rerollcount=0;
-        Rollvaluation rollvalues=d;
         for (int i=0; i<Results.length; i++){
-            String numbervalue=rollvalues.rollvalues[i];
+            String numbervalue= d.rollvalues[i];
             int count=Results[i];
             for (int j=0; j<count;j++){
                 if (numbervalue.equals("0") || numbervalue.equals("1") || numbervalue.equals("2")){

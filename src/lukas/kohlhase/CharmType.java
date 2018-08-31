@@ -4,5 +4,5 @@ public enum CharmType {
     SIMPLE,
     SUPPLEMENTAL,
     REFLEXIVE,
-    PERMANENT;
+    PERMANENT
 }

@@ -6,7 +6,8 @@ public class Armor {
     private int MobilityPenalty;
     private int AttunementCost;
     Boolean Artifact;
-    public enum ArmorType{LIGHT,MEDIUM,HEAVY,UNARMORED};
+    public enum ArmorType{LIGHT,MEDIUM,HEAVY,UNARMORED}
+
     ArmorType Type;
     public Armor( ArmorType type, Boolean artifact) {
         Type = type;

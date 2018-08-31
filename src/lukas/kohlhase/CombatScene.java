@@ -108,12 +108,7 @@ public class CombatScene {
         if(currentround >15){
             return true;
         }
-        if (participants.size()<=1){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return participants.size() <= 1;
     }
 
     public void addParticipant(CombatActor a){

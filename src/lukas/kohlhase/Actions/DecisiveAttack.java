@@ -33,8 +33,7 @@ public class DecisiveAttack implements Attack {
         state.initialAttackpool=baseAttackdice;
         attacker.declareDecisiveAttack(state);
         defender.declareDecisiveDV(state);
-        DiceThrow attackRoll=new DiceThrow(state.changedAttackpool);
-        state.initialAttackRoll=attackRoll;
+        state.initialAttackRoll= new DiceThrow(state.changedAttackpool);
         attacker.modifyDecisiveAttackRollAttacker(state);
         defender.modifyDecisiveAttackRollDefender(state);
         state.attackRollSuccesses=state.modifiedAttackRollDefender.evaluateResults(state.AttackRollValuationAttacker);

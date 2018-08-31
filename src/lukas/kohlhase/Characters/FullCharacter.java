@@ -53,7 +53,7 @@ public class FullCharacter implements CombatActor {
         /*
         We generate basic attacks from the melee weapons that we have available.
          */
-        ArrayList<Attack> possibleattacks = new ArrayList();
+        ArrayList<Attack> possibleattacks = new ArrayList<Attack>();
         for (CombatActor enemy : enemies) { //Generate an attack option for every weapon and every enemy you have.
             for (MeleeWeapon weapon : arnament) {
                 for (String possibility : weapon.usablewith) {
@@ -161,7 +161,7 @@ public class FullCharacter implements CombatActor {
             System.out.println("Attempting to gain a negative amount of initiative. Please fix");
         }
         else {
-            if (initiative<0 && x>=initiative ){//Leaving crash
+            if (initiative<0 && x+initiative>=0 ){//Leaving crash
                 roundsInCrash=10;
                 roundsSinceCrash=-1;
             }
@@ -195,12 +195,7 @@ public class FullCharacter implements CombatActor {
 
     @Override
     public boolean crashbreakable() { //TODO: Implement this properly
-        if (roundsSinceCrash<=3) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return roundsSinceCrash > 3;
     }
 
     @Override

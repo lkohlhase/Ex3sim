@@ -38,8 +38,7 @@ public class WitheringAttack implements Attack{
         state.initialAttackpool=baseAttackdice+baseAccuracy-woundpenalty;
         attacker.declareWitheringAttack(state); // If the attacker wants to change the pool, he modifies the state accordingly.
         defender.declareWitheringDV(state); // Defender declares their dv against this specific attack. This sets both initialdv and changedDv
-        DiceThrow attackRoll=new DiceThrow(state.changedAttackpool);
-        state.initialAttackRoll=attackRoll;
+        state.initialAttackRoll= new DiceThrow(state.changedAttackpool);
         attacker.modifyWitheringAttackRollAttacker(state); //This sets stuff like modifiedAttackRollAttacker and AttackerRollValuation
         defender.modifyWitheringAttackRollDefender(state); //This sets defender modifiedAttackRollDefender
         state.attackRollSuccesses=state.modifiedAttackRollDefender.evaluateResults(state.AttackRollValuationAttacker);
