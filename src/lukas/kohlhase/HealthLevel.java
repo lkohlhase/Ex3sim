@@ -68,4 +68,18 @@ public class HealthLevel {
     public boolean incaped(){
         return incap.get(0)!= damageType.UNDAMAGED;
     }
+    public int woundpenalty(){
+        if (minus4.get(0)!=damageType.UNDAMAGED){
+            return 4;
+        }
+        else if (minus2.get(0)!=damageType.UNDAMAGED){
+            return 2;
+        }
+        if (minus1.get(0)!=damageType.UNDAMAGED){
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
 }

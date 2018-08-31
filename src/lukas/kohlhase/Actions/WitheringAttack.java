@@ -10,6 +10,7 @@ public class WitheringAttack implements Attack{
     public MeleeWeapon weapon;
     public int baseAttackdice;
     public int baseAccuracy;
+    public int woundpenalty;
     public CharmCost cost;
     public int ignoredArmorSoak=0;
     int attackdice,dv,defsoak, thresholdSuccesses,rawdamage,postsoakdice,overwhelming;
@@ -34,7 +35,7 @@ public class WitheringAttack implements Attack{
         System.out.println(attacker.getName()+" withering attacked "+defender.getName());
         AttackState state=new AttackState();
         state.weaponDamage=weapon.getDamage();
-        state.initialAttackpool=baseAttackdice+baseAccuracy;
+        state.initialAttackpool=baseAttackdice+baseAccuracy-woundpenalty;
         attacker.declareWitheringAttack(state); // If the attacker wants to change the pool, he modifies the state accordingly.
         defender.declareWitheringDV(state); // Defender declares their dv against this specific attack. This sets both initialdv and changedDv
         DiceThrow attackRoll=new DiceThrow(state.changedAttackpool);

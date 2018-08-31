@@ -37,6 +37,7 @@ public class FullCharacter implements CombatActor {
         this.attributes= new Attributes();
         this.name=name; //This ensures uniqueness. Might just randomly generate a recognizable name though.
         this.initiative=3;
+        this.armor=new NoArmor();
     }
 
     public FullCharacter(String name, Attributes attributes, Abilities abilities) {
@@ -64,6 +65,7 @@ public class FullCharacter implements CombatActor {
                         tempWithering.baseAttackdice = this.attributes.Dexterity + this.abilities.Melee;
                         tempWithering.cost.TempDefence = weapon.getDefense();
                         tempWithering.weapon=weapon;
+                        tempWithering.woundpenalty=this.health.woundpenalty();
                         switch (possibility) {
                             case "BRAWL":
                                 break;
@@ -96,6 +98,7 @@ public class FullCharacter implements CombatActor {
                         tempWitheringB.baseAccuracy = weapon.getAccuracy();
                         tempWitheringB.baseAttackdice = this.attributes.Dexterity + this.abilities.Brawl; //TODO: Implement specialties.
                         tempWitheringB.weapon=weapon;
+                        tempWitheringB.woundpenalty=this.health.woundpenalty();
                         switch (possibility) {
                             case "BRAWL":
                                 break;
@@ -306,7 +309,7 @@ public class FullCharacter implements CombatActor {
     public void modifyWitheringRawDamageDefender(AttackState x) {
         x.rawDamageModifiedDefender=x.rawDamageModifiedAttacker;
         x.defenderNaturalSoak=attributes.Stamina;
-        x.defenderArmorSoak=0; //TODO: Implement Armor and then add the proper value here.
+        x.defenderArmorSoak=armor.getSoak();
     }
 
     @Override
