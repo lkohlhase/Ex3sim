@@ -22,6 +22,7 @@ public class FullCharacter implements CombatActor {
     Attributes attributes;
     Abilities abilities;
     int temporaryDefenseBonus=0;
+    HealthLevel health=new HealthLevel();
 
     public FullCharacter() {
         this.arnament.add(new MeleeWeaponFactory().Unarmed());
@@ -177,60 +178,8 @@ public class FullCharacter implements CombatActor {
         return 0;
     }
 
-    @Override
-    public int declareDecisiveAttack() {
-        return 0;
-    }
 
-    @Override
-    public int declareWitheringDV(int x) {
-        return 0;
-    }
 
-    @Override
-    public int declareDecisiveDV(int x) {
-        return 0;
-    }
-
-    @Override
-    public int declareWitheringPostHit(int thresholdsuccesses) {
-        return 0;
-    }
-
-    @Override
-    public int declareDecisivePostHit(int x, int y) {
-        return 0;
-    }
-
-    @Override
-    public Action declareWitheringPostMiss() {
-        return null;
-    }
-
-    @Override
-    public Action declareDecisivePostMiss() {
-        return null;
-    }
-
-    @Override
-    public int declareSoak(int thresholdsuccesses) {
-        return 0;
-    }
-
-    @Override
-    public int declarePostSoakDefender(int postsoaksuccesses) {
-        return 0;
-    }
-
-    @Override
-    public int declarePostSoakAttacker(int postsoaksuccesses) {
-        return 0;
-    }
-
-    @Override
-    public void endOfRound() {
-
-    }
 
     @Override
     public boolean crashbreakable() { //TODO: Implement this properly
@@ -257,24 +206,20 @@ public class FullCharacter implements CombatActor {
         this.name=a;
     }
 
-    @Override
-    public int declareHardness() {
-        return 0;
-    }
 
     @Override
     public HealthLevel getHealth() {
-        return null;
+        return this.health;
     }
 
     @Override
     public void setHealth(HealthLevel a) {
-
+        this.health=a;
     }
 
     @Override
     public void takeDamage(int b, damageType x) {
-
+        this.health.takeDamage(b,x);
     }
 
     @Override
@@ -282,36 +227,34 @@ public class FullCharacter implements CombatActor {
         return new DoNothing();
     }
 
-    @Override
     public void addEnemy(CombatActor a) {
         if(!enemies.contains(a)){
             enemies.add(a);
         }
     }
 
-    @Override
     public void addAlly(CombatActor a) {
         if(!allies.contains(a)){
             allies.add(a);
         }
     }
 
-    @Override
+
     public void removeEnemy(CombatActor a) {
         enemies.remove(a);
     }
 
-    @Override
+
     public void removeAlly(CombatActor a) {
         allies.remove(a);
     }
 
-    @Override
+
     public void setEnemies(ArrayList<CombatActor> a) {
         enemies=a;
     }
 
-    @Override
+
     public void setAllies(ArrayList<CombatActor> a) {
         allies=a;
     }
@@ -522,5 +465,10 @@ public class FullCharacter implements CombatActor {
     @Override
     public void declareDecisivePostMissDefender(AttackState x) {
         //Do nothing
+    }
+
+    @Override
+    public void endOfRound() {
+
     }
 }

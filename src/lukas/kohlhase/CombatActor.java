@@ -50,22 +50,12 @@ public interface CombatActor extends Actor {
     void declareDecisivePostMissDefender(AttackState x);
 
 //=========================Old Implementation of Attack Responses etc.     =============================================
-    int declareDecisiveAttack();
-    int declareWitheringDV(int x);
-    int declareDecisiveDV(int x);
-    int declareWitheringPostHit(int thresholdsuccesses);
-    int declareDecisivePostHit(int x,int y);
-    Action declareWitheringPostMiss();
-    Action declareDecisivePostMiss();
-    int declareSoak(int thresholdsuccesses);
-    int declarePostSoakDefender(int postsoaksuccesses);
-    int declarePostSoakAttacker(int postsoaksuccesses);
+
     void endOfRound();
     boolean crashbreakable();
     int declareJoinBattle();
     String getName();
     void setName(String a);
-    int declareHardness();
     HealthLevel getHealth();
     void setHealth(HealthLevel a);
     void takeDamage(int b,damageType x);
