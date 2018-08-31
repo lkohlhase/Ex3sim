@@ -114,6 +114,9 @@ public class HealthLevel {
             else if (box==damageType.AGGRAVATED){
                 System.out.print('A');
             }
+            else{
+                System.out.print('E');
+            }
 
         }System.out.println();
     }

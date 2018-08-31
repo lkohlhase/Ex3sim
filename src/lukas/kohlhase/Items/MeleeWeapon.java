@@ -119,6 +119,7 @@ public class MeleeWeapon {
                         Overwhelming++;
                         break;
                     case BASHING:
+
                         damagetype= damageType.BASHING;
                         break;
                     case BRAWL:

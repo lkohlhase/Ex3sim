@@ -22,6 +22,5 @@ public class Main {
 
         CombatScene fighterino=new CombatScene(fighters);
         fighterino.runCombat();
-
     }
 }

@@ -58,6 +58,9 @@ public class DecisiveAttack implements Attack {
                 attacker.modifyDecisiveDamageDoneAttacker(state);
                 defender.modifyDecisiveDamageDoneDefender(state);
                 defender.takeDamage(state.healthDamageDoneModifiedDefender,weapon.damagetype);
+                System.out.println("Damagetype: "+weapon.damagetype);
+                System.out.println("Damageamount: "+state.healthDamageDoneModifiedDefender);
+                System.out.println(weapon.name);
                 System.out.println("After the attack "+defender.getName()+" has the following healthlevels");
                 defender.getHealth().print();
             }

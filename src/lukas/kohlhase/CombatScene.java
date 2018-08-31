@@ -69,6 +69,8 @@ public class CombatScene {
         currentround++;
         for (CombatActor i: participants){
             System.out.println(i.getName()+": "+i.getInitiative()+" Initiative");
+            System.out.println(i.getName()+" health:");
+            i.getHealth().print();
         }
         System.out.println("Round "+currentround+" is ending. ");
         System.out.println("===================================================================================");
@@ -81,7 +83,17 @@ public class CombatScene {
             Action currentAction=current.chooseAction(participants.toArray(new CombatActor[participants.size()]));
             currentAction.resolve();
             yetToAct.remove(current);
-            alreadyActed.add(current);
+            alreadyActed.add(current); //TODO: Implement checking whether someone is dead and then removing that person.
+            ArrayList<CombatActor> toberemoved=new ArrayList<>();
+            for (CombatActor dude: participants){
+                if (dude.getHealth().incaped()){
+                    toberemoved.add(dude);
+                    yetToAct.remove(dude);
+                }
+            }
+            for (CombatActor dude:toberemoved){
+                this.removeParticipant(dude);
+            }
 
         }
     }
