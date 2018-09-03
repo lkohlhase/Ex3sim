@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+//TODO: Save the matrix generated at the end as a csv or some shit, that way we can do analysis on it with actual tools for data analysis like python.
 public class MortalCombatTest extends CombatScene { //We use this class to test the winrates of various mortal unarmed builds against each other.
     public MortalCombatTest(){
         super(new ArrayList<CombatActor>());

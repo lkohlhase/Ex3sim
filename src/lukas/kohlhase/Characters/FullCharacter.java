@@ -8,7 +8,7 @@ import lukas.kohlhase.Dice.DecisiveValuation;
 import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Dice.Rollvaluation;
 import lukas.kohlhase.Items.*;
-public class FullCharacter implements CombatActor {
+public class FullCharacter implements CombatActor { //TODO: Change to a logging framework instead of printlns.
     /*
         Intended for inheritance from, so that basic calculations of dicepools etc. from stats is possible
      */
