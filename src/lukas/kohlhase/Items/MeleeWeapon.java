@@ -4,7 +4,6 @@ import lukas.kohlhase.damageType;
 
 import java.util.ArrayList;
 //Possible TODO: worry about attunement costs of weapons.
-//TODO: Check why weapons don't seem to have any proper values at all.
 public class MeleeWeapon {
     private int Accuracy;
 

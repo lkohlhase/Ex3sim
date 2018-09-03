@@ -109,7 +109,7 @@ public class CombatScene {
     }
 
     public boolean combatOver(){
-        if(currentround >15){
+        if(currentround >100){
             return true;
         }
         return participants.size() <= 1;

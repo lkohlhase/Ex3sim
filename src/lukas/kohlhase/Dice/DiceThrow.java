@@ -37,7 +37,7 @@ public class DiceThrow {
             }
 
         }
-        return successcount; // TODO: Make a version of this that is not pure default, and make it reroll etc.
+        return successcount;
     }
     public int evaluateResults(Rollvaluation d){
         int successcount=0;

@@ -30,25 +30,32 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
 
         this.addParticipant(fighter1);
         this.addParticipant(fighter2);
-        for (int i=5; i<6; i++){
+        for (int i=5; i<20; i++){
             System.setOut(console);
             System.out.println(i);
-//            System.setOut(test);
+            System.setOut(test);
             dictionary.put(i,new HashMap<Integer,Integer>());
             fighter1.setThresh(i);
-            for (int j=5; j<6; j++){
-                fighter2.setThresh(j);
-                this.removeParticipant(fighter1);
-                this.removeParticipant(fighter2);
-                this.addParticipant(fighter1);
-                this.addParticipant(fighter2);
-                this.resetCombat();
-                dictionary.get(i).put(j,0);
-                System.out.println("____________________________________________________________________________________________________________________________________");
-                System.out.println("Steve has threshold : "+i+" and Karl has threshold: "+j);
-                this.joinBattle();
-                this.runCombat();
+            for (int j=5; j<20; j++){
+                for (int k=0; k<10; k++) {
+                    fighter2.setThresh(j);
+                    this.removeParticipant(fighter1);
+                    this.removeParticipant(fighter2);
+                    this.addParticipant(fighter1);
+                    this.addParticipant(fighter2);
+                    this.resetCombat();
+                    dictionary.get(i).put(j, 0);
+                    System.out.println("____________________________________________________________________________________________________________________________________");
+                    System.out.println("Steve has threshold : " + i + " and Karl has threshold: " + j);
+                    this.joinBattle();
+                    this.runCombat();
+                    if (!fighter1.getHealth().incaped() && fighter2.getHealth().incaped()) {
+                        dictionary.get(i).put(j, dictionary.get(i).get(j) + 1);
+                    }
+                }
+
             }
         }
+
     }
 }

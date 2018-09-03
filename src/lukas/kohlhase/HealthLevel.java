@@ -74,7 +74,7 @@ public class HealthLevel {
             }
             else if (incap.contains(damageType.UNDAMAGED)){
                 incap.set(incap.indexOf(damageType.UNDAMAGED),type);
-            } //TODO Handle wrapping over of BASHING damageType into LETHAL.
+            } //Note: Not handling wrapover of bashing into lethal, since we don't deal with healing anyway.
         }
     }
     public boolean incaped(){

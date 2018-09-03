@@ -51,7 +51,7 @@ public class WitheringAttack implements Attack{
             attacker.modifyWitheringRawDamageAttacker(state); //Sets normal raw damageType, based on strength and weapon damageType, and then sets rawDamagemModifiedAttacker
             defender.modifyWitheringRawDamageDefender(state); //this sets rawDamageModifiedDefender, and sets up the various soak values, so natural soak and armor soak.
             System.out.println("The raw damage of the attack is: "+state.rawDamageModifiedDefender);
-            state.totalSoak = Math.max(state.defenderArmorSoak - ignoredArmorSoak, 0) + state.defenderNaturalSoak; //TODO: Check whether this is the actual soak formula.
+            state.totalSoak = Math.max(state.defenderArmorSoak - ignoredArmorSoak, 0) + state.defenderNaturalSoak; //
             attacker.modifyTotalSoakAttacker(state); //This sets totalSoakmodifiedAttacker. Don't think this actually has support in the solar charmset, but giving opportunities to work with.
             defender.modifyTotalSoakDefender(state); // This sets totalSoakmodifiedDefender.
             state.postSoakSuccesses=Math.max(state.rawDamageModifiedDefender-state.totalSoakModifiedDefender,weapon.getOverwhelming());

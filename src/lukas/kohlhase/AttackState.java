@@ -7,7 +7,7 @@ public class AttackState {
     /*
     The intention is for instances of this class to be passed along by attacker and defender, and being changed constantly. Contains all the relevant information about an attack, so taht people can react to it.
      */
-    public AttackState currentPhase; //TODO: Add this
+    public AttackState currentPhase; //TODO: Add this, when we implement charms and see the necessity. Else leave it untouched.
     public int initialAttackpool;
     public int initialDv;
     public int changedAttackpool;
@@ -22,7 +22,7 @@ public class AttackState {
     public int thresholdModifiedAttacker;
     public int thresholdModifiedDefender;
     public int defenderNaturalSoak;
-    public int defenderArmorSoak; //TODO: Change this if we ever see different kinds of soak
+    public int defenderArmorSoak;
     public int totalSoak;
     public int totalSoakModifiedAttacker;
     public int totalSoakModifiedDefender;

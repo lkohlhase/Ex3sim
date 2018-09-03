@@ -195,7 +195,7 @@ public class FullCharacter implements CombatActor {
 
     @Override
     public boolean crashbreakable() { //TODO: Implement this properly
-        return roundsSinceCrash > 3;
+        return roundsSinceCrash > 3 && this.initiative>0;
     }
 
     @Override
@@ -273,7 +273,6 @@ public class FullCharacter implements CombatActor {
     public void declareWitheringAttack(AttackState x) {
         x.changedAttackpool=x.initialAttackpool;
     }
-//TODO: Add woundpenalty to calculations here.
     @Override
     public void declareWitheringDV(AttackState x) {
         int parryDV=(attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl)/2)+temporaryDefenseBonus-this.health.woundpenalty(); //We round down, so just using integer division here is fine.
@@ -365,8 +364,9 @@ public class FullCharacter implements CombatActor {
             System.out.println(this.getName()+" crashed his opponent.");
             this.gainInitiative(5);
         }
+        x.attackerCrashed=(initiative<=-x.initiativeDamageDoneModifiedDefender && this.crashbreakable());
         this.changeInitiative(x.initiativeDamageDoneModifiedDefender);
-        x.attackerCrashed=(initiative<=0 && this.crashbreakable());
+
 
     }
 
