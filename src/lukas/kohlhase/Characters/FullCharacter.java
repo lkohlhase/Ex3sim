@@ -276,10 +276,10 @@ public class FullCharacter implements CombatActor {
 //TODO: Add woundpenalty to calculations here.
     @Override
     public void declareWitheringDV(AttackState x) {
-        int parryDV=(attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl)/2)+temporaryDefenseBonus; //We round down, so just using integer division here is fine.
-        int dodgeDV=(attributes.Dexterity+abilities.Dodge)/2+temporaryDefenseBonus-armor.getMobilityPenalty();
-        x.initialDv=Math.max(parryDV,dodgeDV); //Choose the higher one always.
-        x.changedDv=x.initialDv;
+        int parryDV=(attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl)/2)+temporaryDefenseBonus-this.health.woundpenalty(); //We round down, so just using integer division here is fine.
+        int dodgeDV=(attributes.Dexterity+abilities.Dodge)/2+temporaryDefenseBonus-armor.getMobilityPenalty()-this.health.woundpenalty();
+        x.initialDv=Math.max(Math.max(0,parryDV),dodgeDV); //Choose the higher one always.
+        x.changedDv=x.initialDv; //
     }
 
     @Override
@@ -371,9 +371,7 @@ public class FullCharacter implements CombatActor {
     }
 
     @Override
-    public void updateInitiativeDefender(AttackState x) {
-        if (x.defenderCrashed)
-            this.loseInitiative(5);
+    public void updateInitiativeDefender(AttackState x) { //TODO: Update rules for crash.
         this.changeInitiative(-x.initiativeDamageDoneModifiedDefender);
     }
 
