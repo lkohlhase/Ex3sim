@@ -6,10 +6,10 @@ import lukas.kohlhase.Dice.DiceThrow;
 import java.util.*;
 
 public class CombatScene {
-    ArrayList<CombatActor> participants;
+    public ArrayList<CombatActor> participants;
     int currentround;
-    ArrayList<CombatActor> yetToAct =new ArrayList<>();
-    ArrayList<CombatActor> alreadyActed = new ArrayList<>();
+    public ArrayList<CombatActor> yetToAct =new ArrayList<>();
+    public ArrayList<CombatActor> alreadyActed = new ArrayList<>();
     public CombatScene(ArrayList<CombatActor> actors){ //Basic idea is free for all for now
         participants=actors;
         currentround=0;
@@ -33,6 +33,10 @@ public class CombatScene {
             System.out.println(i.getName()+" rolled Join Battle with "+joinbattlepool+" dice and got "+joinbattleresult+" successes.");
 
         }
+    }
+    public void fullCombat(){
+        this.joinBattle();
+        this.runCombat();
     }
     public CombatActor getCurrentActor(){
         /*
@@ -83,7 +87,7 @@ public class CombatScene {
             Action currentAction=current.chooseAction(participants.toArray(new CombatActor[participants.size()]));
             currentAction.resolve();
             yetToAct.remove(current);
-            alreadyActed.add(current); //TODO: Implement checking whether someone is dead and then removing that person.
+            alreadyActed.add(current);
             ArrayList<CombatActor> toberemoved=new ArrayList<>();
             for (CombatActor dude: participants){
                 if (dude.getHealth().incaped()){
@@ -110,14 +114,22 @@ public class CombatScene {
         }
         return participants.size() <= 1;
     }
-
-    public void addParticipant(CombatActor a){
+    public void resetCombat(){
+        for (CombatActor participant: this.participants){
+            participant.getHealth().reset();
+        }
+        this.currentround=0;
+    }
+    public void addParticipantToFight(CombatActor a){
         participants.add(a);
         int joinbattlepool=a.declareJoinBattle();
         DiceThrow joinBattleRoll=new DiceThrow(joinbattlepool);
         int joinbattleresult=joinBattleRoll.evaluateResults();
         a.setInitiative(joinbattleresult);
         yetToAct.add(a);
+    }
+    public void addParticipant(CombatActor a){
+        participants.add(a);
     }
     public void removeParticipant(CombatActor a){
         participants.remove(a);
