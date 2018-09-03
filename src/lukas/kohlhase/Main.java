@@ -19,8 +19,17 @@ public class Main {
         ArrayList<CombatActor> fighters=new ArrayList<CombatActor>();
         fighters.add(fighter1);
         fighters.add(fighter2);
+        fighter1.attributes.Dexterity=5;
+        fighter1.abilities.Brawl=5;
+        fighter1.attributes.Wits=5;
+        fighter1.abilities.Awareness=5;
 
         CombatScene fighterino=new CombatScene(fighters);
         fighterino.runCombat();
+        fighter1.getHealth().reset();
+        fighter2.getHealth().reset();
+        fighter1.getHealth().print();
+        fighter2.getHealth().print();
+
     }
 }

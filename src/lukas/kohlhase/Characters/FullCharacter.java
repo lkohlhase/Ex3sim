@@ -20,8 +20,8 @@ public class FullCharacter implements CombatActor {
     ArrayList<CombatActor> allies=new ArrayList<>(); //Same here
     ArrayList<MeleeWeapon> arnament=new ArrayList<>();
     Armor armor=new NoArmor(); //If we want a character to have armor, it needs to be explicitly set. We can just replace this value with a proper armor.
-    Attributes attributes;
-    Abilities abilities;
+    public Attributes attributes;
+    public Abilities abilities;
     int temporaryDefenseBonus=0;
     HealthLevel health=new HealthLevel();
 

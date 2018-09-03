@@ -31,6 +31,16 @@ public class HealthLevel {
             incap.add(damageType.UNDAMAGED);
         }
     }
+    public void reset(){ // Resets the health levels to full undamaged.
+        Vector<damageType>[] levels=new Vector[]{minus0,minus1,minus2,minus4,incap};
+        for (Vector<damageType> v:levels){
+            System.out.println(v);
+            for (int i=0; i<v.size();i++){
+                v.set(i,damageType.UNDAMAGED);
+            }
+            System.out.println(v);
+        }
+    }
     public HealthLevel(){
         this(1,2,2,1,1); //Default values for human characters.
     }
