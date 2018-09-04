@@ -176,7 +176,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     }
     public void loseInitiative(int x){
         if (x<0){
-            logger.log(Level.INFO,"Attempting to lose a negative amount of initiative. Please fix");
+            logger.log(Level.FINE,"Attempting to lose a negative amount of initiative. Please fix");
         }
         else {
                 initiative-=x;
@@ -366,7 +366,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     public void updateInitiativeAttacker(AttackState x) {
         this.gainInitiative(1); //Opponent was hit
         if(x.defenderCrashed){
-            logger.log(Level.INFO,this.getName()+"crashed his opponent.");
+            logger.log(Level.FINE,this.getName()+"crashed his opponent.");
             this.gainInitiative(5);
         }
         x.attackerCrashed=(initiative<=-x.initiativeDamageDoneModifiedDefender && this.crashbreakable());

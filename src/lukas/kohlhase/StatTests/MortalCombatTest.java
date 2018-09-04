@@ -9,19 +9,15 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Logger;
+
 //TODO: Save the matrix generated at the end as a csv or some shit, that way we can do analysis on it with actual tools for data analysis like python.
 public class MortalCombatTest extends CombatScene { //We use this class to test the winrates of various mortal unarmed builds against each other.
+    private static final Logger logger=Logger.getLogger("mylogger");
+
     public MortalCombatTest(){
         super(new ArrayList<CombatActor>());
-        PrintStream console=System.out;
-        PrintStream test;
-        try {
-            test = new PrintStream(new File("MortalCombatTest.txt"));
-        } catch (FileNotFoundException e) {
-            System.out.println("Could not find the file");
-            test=console;
-        };
-        System.setOut(test);
+
         MortalTestAttacker fighter1=new MortalTestAttacker("Steve");
         MortalTestAttacker fighter2=new MortalTestAttacker("Karl");
         fighter1.addEnemy(fighter2);
@@ -41,9 +37,7 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
         this.addParticipant(fighter1);
         this.addParticipant(fighter2);
         for (int i=5; i<20; i++){
-            System.setOut(console);
             System.out.println(i);
-            System.setOut(test);
             dictionary.put(i,new HashMap<Integer,Integer>());
             fighter1.setThresh(i);
             for (int j=5; j<20; j++){
@@ -68,7 +62,6 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
             }
         }
         for (int i=5; i<20; i++){
-            System.setOut(console);
             String output="";
             for (int j=5; j<20; j++){
                 if (dictionary.get(i).get(j)>=100)

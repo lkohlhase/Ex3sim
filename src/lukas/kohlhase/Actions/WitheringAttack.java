@@ -36,7 +36,7 @@ public class WitheringAttack implements Attack{
         This will eventually replace resolve(), and is being reworked to work with the attackstate idea of things.
          */
         //TODO: Possibly break this sort of stuff into different functions
-        logger.log(Level.INFO,attacker.getName()+" withering attacked "+defender.getName());
+        logger.log(Level.FINE,attacker.getName()+" withering attacked "+defender.getName());
         AttackState state=new AttackState();
         state.weaponDamage=weapon.getDamage();
         state.initialAttackpool=baseAttackdice+baseAccuracy-woundpenalty;
@@ -47,19 +47,19 @@ public class WitheringAttack implements Attack{
         defender.modifyWitheringAttackRollDefender(state); //This sets defender modifiedAttackRollDefender
         state.attackRollSuccesses=state.modifiedAttackRollDefender.evaluateResults(state.AttackRollValuationAttacker);
         state.threshholdSuccesses=state.attackRollSuccesses-state.changedDv;
-        logger.log(Level.INFO,attacker.getName()+" rolled "+state.changedAttackpool+" dice against "+defender.getName()+"'s dv of "+state.changedDv+" and gained "+state.attackRollSuccesses+" successes.");
+        logger.log(Level.FINE,attacker.getName()+" rolled "+state.changedAttackpool+" dice against "+defender.getName()+"'s dv of "+state.changedDv+" and gained "+state.attackRollSuccesses+" successes.");
         attacker.changeWitheringThreshholdAttacker(state); //This sets thresholdModifiedAttacker
         defender.changeWitheringThreshholdDefender(state); //This sets thresholdModifiedDefender
         if(state.thresholdModifiedDefender>=0) {
-            logger.log(Level.INFO,attacker.getName()+" hit "+defender.getName()+" with "+state.thresholdModifiedDefender+" threshhold successes.");
+            logger.log(Level.FINE,attacker.getName()+" hit "+defender.getName()+" with "+state.thresholdModifiedDefender+" threshhold successes.");
             attacker.modifyWitheringRawDamageAttacker(state); //Sets normal raw damageType, based on strength and weapon damageType, and then sets rawDamagemModifiedAttacker
             defender.modifyWitheringRawDamageDefender(state); //this sets rawDamageModifiedDefender, and sets up the various soak values, so natural soak and armor soak.
-           logger.log(Level.INFO, "The raw damage of the attack is: "+state.rawDamageModifiedDefender);
+           logger.log(Level.FINE, "The raw damage of the attack is: "+state.rawDamageModifiedDefender);
             state.totalSoak = Math.max(state.defenderArmorSoak - ignoredArmorSoak, 0) + state.defenderNaturalSoak; //
             attacker.modifyTotalSoakAttacker(state); //This sets totalSoakmodifiedAttacker. Don't think this actually has support in the solar charmset, but giving opportunities to work with.
             defender.modifyTotalSoakDefender(state); // This sets totalSoakmodifiedDefender.
             state.postSoakSuccesses=Math.max(state.rawDamageModifiedDefender-state.totalSoakModifiedDefender,weapon.getOverwhelming());
-            logger.log(Level.INFO,state.totalSoakModifiedDefender+" damage is soaked, leading to post soak dice of "+state.postSoakSuccesses);
+            logger.log(Level.FINE,state.totalSoakModifiedDefender+" damage is soaked, leading to post soak dice of "+state.postSoakSuccesses);
             attacker.declarePostSoakAttacker(state); //sets postSoakSuccessesModifiedAttacker
             defender.declarePostSoakDefender(state); //sets postSoakSuccessesModifiedDefender
             DiceThrow droll=new DiceThrow(state.postSoakSuccessesModifiedDefender);
@@ -67,7 +67,7 @@ public class WitheringAttack implements Attack{
             attacker.modifyWitheringDamageRollAttacker(state); //sets damageRollmodifiedAttacker and damageRollvValuation
             defender.modifyWitheringDamageRollDefender(state); //sets damageRollmodifiedDefender
             state.initiativeDamageDone=state.damageRollModifiedDefender.evaluateResults(state.damageRollValuation);
-            logger.log(Level.INFO,attacker.getName()+" rolls "+state.postSoakSuccessesModifiedDefender+" dice and achieves "+state.initiativeDamageDone+" successes.");
+            logger.log(Level.FINE,attacker.getName()+" rolls "+state.postSoakSuccessesModifiedDefender+" dice and achieves "+state.initiativeDamageDone+" successes.");
             attacker.modifyInitiativeDamageAttacker(state);
             defender.modifyInitiativeDamageDefender(state); //Since this is the last change of initiative, we can check whether the defender was crashed here.
             attacker.updateInitiativeAttacker(state);

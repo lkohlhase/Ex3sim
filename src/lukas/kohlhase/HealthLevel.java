@@ -114,7 +114,7 @@ public class HealthLevel {
         if (incaped()){
             logmessage+="INCAPACITATED/DEAD";
         }
-        logger.log(Level.INFO,logmessage);
+        logger.log(Level.FINE,logmessage);
     }
 
     private String printdamage(Vector<damageType> a) {

@@ -1,9 +1,14 @@
 package lukas.kohlhase.Dice;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class DiceThrow {
     /*
     Used for throwing dice in our simulations.
      */
+    private static final Logger logger=Logger.getLogger("mylogger");
+
     int[] Results= {0,0,0,0,0,0,0,0,0,0};
     public DiceThrow(int numDice){
         for (int i=0; i<numDice; i++){
@@ -11,6 +16,16 @@ public class DiceThrow {
             int dieroll=rand.nextInt(10);
             Results[dieroll]++;
         }
+        String logoutput="Diceroll: ";
+        for (int j=1; j<10; j++){
+            for (int i=0; i<Results[j];i++){
+                logoutput+=(j)+" ";
+            }
+        }
+        for (int i=0; i<Results[0];i++){
+            logoutput+="10 ";
+        }
+        logger.log(Level.FINER,logoutput);
     }
     public int evaluateResults(){
         int successcount=0;

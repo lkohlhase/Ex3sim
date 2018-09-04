@@ -14,7 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
         Logger logger=Logger.getLogger("mylogger");
-        logger.setLevel(Level.INFO);
+        logger.setLevel(Level.FINER);
+        Logger.getGlobal().getParent().getHandlers()[0].setLevel(Level.FINER);
         MortalTestAttacker fighter1=new MortalTestAttacker();
         fighter1.setName("Steve");
         MortalTestAttacker fighter2=new MortalTestAttacker();

@@ -4,8 +4,12 @@ import lukas.kohlhase.Characters.ErrorActor;
 import lukas.kohlhase.Dice.DiceThrow;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CombatScene {
+    private static final Logger logger=Logger.getLogger("mylogger");
+
     public ArrayList<CombatActor> participants;
     int currentround;
     public ArrayList<CombatActor> yetToAct =new ArrayList<>();
@@ -30,7 +34,7 @@ public class CombatScene {
             int joinbattleresult=joinBattleRoll.evaluateResults();
             i.setInitiative(joinbattleresult+3);
             yetToAct.add(i);
-            System.out.println(i.getName()+" rolled Join Battle with "+joinbattlepool+" dice and got "+joinbattleresult+" successes.");
+            logger.log(Level.FINE,i.getName()+" rolled Join Battle with "+joinbattlepool+" dice and got "+joinbattleresult+" successes.");
 
         }
     }
@@ -43,7 +47,7 @@ public class CombatScene {
         Finds the person currently acting by looking for the one with highest initiative;
          */
         if (yetToAct.isEmpty()){
-            System.out.println("Round has ended, nothing will be returned");
+            logger.log(Level.WARNING,"Round has ended, nothing will be returned");
             return new ErrorActor();
         }
         else {
@@ -60,7 +64,7 @@ public class CombatScene {
 
     public void endRound(){
         if(!yetToAct.isEmpty()){
-            System.out.println("A character hasn't taken an action. Sucks to be them I guess");
+           logger.log(Level.WARNING,"A character hasn't taken an action. Sucks to be them I guess");
             yetToAct.clear();
 
         }
@@ -72,12 +76,12 @@ public class CombatScene {
         alreadyActed.clear();
         currentround++;
         for (CombatActor i: participants){
-            System.out.println(i.getName()+": "+i.getInitiative()+" Initiative");
-            System.out.println(i.getName()+" health:");
+            logger.log(Level.FINE,i.getName()+": "+i.getInitiative()+" Initiative");
+            logger.log(Level.FINE,i.getName()+" health:");
             i.getHealth().print();
         }
-        System.out.println("Round "+currentround+" is ending. ");
-        System.out.println("===================================================================================");
+        logger.log(Level.FINE,"Round "+currentround+" is ending. ");
+        logger.log(Level.FINE,"===================================================================================");
 
     }
 
