@@ -1,6 +1,11 @@
 package lukas.kohlhase;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class HealthLevel {
+    private static final Logger logger=Logger.getLogger("mylogger");
+
     Vector<damageType> minus0,minus1,minus2,minus4,incap;
     Vector<damageType> tempminus0,tempminus1,tempminus2,tempminus4;
 
@@ -95,37 +100,45 @@ public class HealthLevel {
         }
     }
     public void print(){
-        System.out.print("-0:");
-        printdamage(minus0);
-        System.out.print("-1:");
-        printdamage(minus1);
-        System.out.print("-2:");
-        printdamage(minus2);
-        System.out.print("-4:");
-        printdamage(minus4);
+        String logmessage="";
+        logmessage+="Healthlevels: \n";
+        logmessage+="-0:";
+        logmessage+=printdamage(minus0);
+        logmessage+="-1:";
+        logmessage+=printdamage(minus1);
+        logmessage+="-2:";
+        logmessage+=printdamage(minus2);
+        logmessage+="-4:";
+        logmessage+=printdamage(minus4);
+
         if (incaped()){
-            System.out.println("incapacitated/dead");
+            logmessage+="INCAPACITATED/DEAD";
         }
+        logger.log(Level.INFO,logmessage);
     }
 
-    private void printdamage(Vector<damageType> a) {
+    private String printdamage(Vector<damageType> a) {
+        String returnmessage="";
         for (damageType box: a){
             if(box == damageType.UNDAMAGED){
-                System.out.print("0");
+                returnmessage+="0";
             }
             else if(box == damageType.LETHAL){
-                System.out.print("L");
+                returnmessage+="L";
             }
             else if (box == damageType.BASHING){
-                System.out.print('B');
+                returnmessage+="B";
             }
             else if (box==damageType.AGGRAVATED){
-                System.out.print('A');
+                returnmessage+="A";
             }
             else{
-                System.out.print('E');
+                returnmessage+="E";
+                logger.log(Level.WARNING,"an unexpected damagetype occured "+box.name());
             }
 
-        }System.out.println();
+        }
+    returnmessage+="\n";
+    return returnmessage;
     }
 }

@@ -1,6 +1,8 @@
 package lukas.kohlhase.Characters;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import lukas.kohlhase.*;
 import lukas.kohlhase.Actions.*;
@@ -12,6 +14,8 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     /*
         Intended for inheritance from, so that basic calculations of dicepools etc. from stats is possible
      */
+    private static final Logger logger=Logger.getLogger("mylogger");
+
     private int initiative;
     int roundsInCrash=10; //Code for isn't crashed.
     int roundsSinceCrash=10; //Hasn't recently been crashed
@@ -158,7 +162,8 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     }
     public void gainInitiative(int x){
         if (x<0){
-            System.out.println("Attempting to gain a negative amount of initiative. Please fix");
+            logger.log(Level.WARNING,"Attempting to gain a negative amount of initiative. Please fix");
+
         }
         else {
             if (initiative<0 && x+initiative>=0 ){//Leaving crash
@@ -171,7 +176,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     }
     public void loseInitiative(int x){
         if (x<0){
-            System.out.println("Attempting to lose a negative amount of initiative. Please fix");
+            logger.log(Level.INFO,"Attempting to lose a negative amount of initiative. Please fix");
         }
         else {
                 initiative-=x;
@@ -361,7 +366,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     public void updateInitiativeAttacker(AttackState x) {
         this.gainInitiative(1); //Opponent was hit
         if(x.defenderCrashed){
-            System.out.println(this.getName()+" crashed his opponent.");
+            logger.log(Level.INFO,this.getName()+"crashed his opponent.");
             this.gainInitiative(5);
         }
         x.attackerCrashed=(initiative<=-x.initiativeDamageDoneModifiedDefender && this.crashbreakable());

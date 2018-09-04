@@ -5,7 +5,11 @@ import lukas.kohlhase.Dice.DecisiveValuation;
 import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Items.MeleeWeapon;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class DecisiveAttack implements Attack {
+    private static final Logger logger=Logger.getLogger("mylogger");
     int attackInitiative;
     CombatActor attacker,defender;
     damageType damagetype;
@@ -28,7 +32,7 @@ public class DecisiveAttack implements Attack {
         /*
         Same deal as with resolve2() in WitheringAttack, currently put in so that I can keep the old structure intact, and rebuild with
          */
-        System.out.println(attacker.getName()+" decisive attacked "+defender.getName());
+        logger.log(Level.INFO,attacker.getName()+" decisive attacked "+defender.getName());
         AttackState state=new AttackState();
         state.initialAttackpool=baseAttackdice;
         attacker.declareDecisiveAttack(state);
@@ -37,12 +41,12 @@ public class DecisiveAttack implements Attack {
         attacker.modifyDecisiveAttackRollAttacker(state);
         defender.modifyDecisiveAttackRollDefender(state);
         state.attackRollSuccesses=state.modifiedAttackRollDefender.evaluateResults(state.AttackRollValuationAttacker);
-        System.out.println(attacker.getName()+" rolls "+state.changedAttackpool+" dice against "+defender.getName()+"'s dv of "+state.changedDv+" achieving "+state.attackRollSuccesses+" successes.");
+        logger.log(Level.INFO,attacker.getName()+" rolls "+state.changedAttackpool+" dice against "+defender.getName()+"'s dv of "+state.changedDv+" achieving "+state.attackRollSuccesses+" successes.");
         state.threshholdSuccesses=state.attackRollSuccesses-state.changedDv;
         attacker.changeDecisiveThreshholdAttacker(state);
         defender.changeDecisiveThreshholdDefender(state);
         if(state.thresholdModifiedDefender>=0){//Decisive Attack hit
-            System.out.println(attacker.getName()+" hits "+defender.getName());
+            logger.log(Level.INFO,attacker.getName()+" hits "+defender.getName());
             state.decisiveRawDamage=attacker.getInitiative();
             attacker.modifyDecisiveHitAttacker(state); //Maybe it's possible to do stuff when you've hit the target. Haven't checked charms yet. Set Initiative for damageRoll
             defender.modifyDecisiveHitDefender(state); //Set stuff like hardness, possibly perfect the attack or w/e.
@@ -52,22 +56,22 @@ public class DecisiveAttack implements Attack {
                 attacker.modifyDecisiveDamageRollAttacker(state);
                 defender.modifyDecisiveDamageRollDefender(state);
                 int damagedone=state.damageRollModifiedDefender.evaluateResults(state.damageRollValuation);
-                System.out.println(attacker.getName()+" rolled "+state.decisiveRawDamageModifiedDefender+" dice and had "+damagedone+" successes.");
+                logger.log(Level.INFO,attacker.getName()+" rolled "+state.decisiveRawDamageModifiedDefender+" dice and had "+damagedone+" successes.");
                 state.healthDamageDone=damagedone;
                 attacker.modifyDecisiveDamageDoneAttacker(state);
                 defender.modifyDecisiveDamageDoneDefender(state);
                 defender.takeDamage(state.healthDamageDoneModifiedDefender,weapon.damagetype);
-                System.out.println("After the attack "+defender.getName()+" has the following healthlevels");
+                logger.log(Level.INFO,"After the attack "+defender.getName()+" has the following healthlevels");
                 defender.getHealth().print();
             }
             else {
-                System.out.println("Attack does no damage, since the hardness was not overcome.");
+                logger.log(Level.INFO,"Attack does no damage, since the hardness was not overcome.");
             }
             attacker.resetBaseInitiative(state);
 
         }
         else {
-            System.out.println(attacker.getName()+" has missed a decisive attack on "+defender.getName());
+            logger.log(Level.INFO,attacker.getName()+" has missed a decisive attack on "+defender.getName());
             attacker.declareDecisivePostMissAttacker(state);//Handles the attacker losing initiative for a miss.
             defender.declareDecisivePostMissDefender(state);
         }
