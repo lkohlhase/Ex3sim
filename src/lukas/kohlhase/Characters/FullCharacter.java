@@ -280,8 +280,8 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     }
     @Override
     public void declareWitheringDV(AttackState x) {
-        int parryDV=((attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl))/2)+temporaryDefenseBonus-this.health.woundpenalty(); //We round down, so just using integer division here is fine.
-        int dodgeDV=(attributes.Dexterity+abilities.Dodge)/2+temporaryDefenseBonus-armor.getMobilityPenalty()-this.health.woundpenalty();
+        int parryDV=(int) Math.ceil((attributes.Dexterity+Math.max(abilities.Melee,abilities.Brawl))/2)+temporaryDefenseBonus-this.health.woundpenalty(); //We round down, so just using integer division here is fine.
+        int dodgeDV=(int) Math.ceil((attributes.Dexterity+abilities.Dodge)/2)+temporaryDefenseBonus-armor.getMobilityPenalty()-this.health.woundpenalty();
         x.initialDv=Math.max(Math.max(0,parryDV),dodgeDV); //Choose the higher one always.
         x.changedDv=x.initialDv; //
     }
@@ -489,3 +489,4 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
         this.roundsInCrash++;
     }
 }
+//TODO: think about implementing Initiative shift.
