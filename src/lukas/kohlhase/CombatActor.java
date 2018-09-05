@@ -43,12 +43,12 @@ public interface CombatActor extends Actor {
     void modifyDecisiveHitDefender(AttackState x);
     void modifyDecisiveDamageRollAttacker(AttackState x);
     void modifyDecisiveDamageRollDefender(AttackState x);
-    void resetBaseInitiative(AttackState x);
+
     void modifyDecisiveDamageDoneAttacker(AttackState x);
     void modifyDecisiveDamageDoneDefender(AttackState x);
     void declareDecisivePostMissAttacker(AttackState x);
     void declareDecisivePostMissDefender(AttackState x);
-
+    void resetBaseInitiative();
 //=========================Old Implementation of Attack Responses etc.     =============================================
 
     void endOfRound();

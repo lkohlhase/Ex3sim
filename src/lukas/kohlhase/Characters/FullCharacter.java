@@ -448,8 +448,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
         x.damageRollModifiedDefender=x.damageRollModifiedAttacker;
     }
 
-    @Override
-    public void resetBaseInitiative(AttackState x) {
+    public void resetBaseInitiative() {
         this.initiative=3;
     }
 
@@ -465,11 +464,11 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
 
     @Override
     public void declareDecisivePostMissAttacker(AttackState x) {
-        if(this.initiative>11){
-            this.loseInitiative(2);
+        if(this.initiative>=11){
+            this.loseInitiative(3);
         }
-        else{
-            this.loseInitiative(1);
+        else if (this.initiative>0){
+            this.loseInitiative(2);
         }
     }
 
@@ -480,6 +479,13 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
 
     @Override
     public void endOfRound() {
-
+        if(this.initiative<0){
+            if(this.roundsInCrash >=3){
+                this.resetBaseInitiative();
+                this.roundsSinceCrash=0;
+                this.roundsInCrash=-1;
+            }
+        }
+        this.roundsInCrash++;
     }
 }
