@@ -4,11 +4,10 @@ import lukas.kohlhase.Characters.MortalTestAttacker;
 import lukas.kohlhase.CombatActor;
 import lukas.kohlhase.CombatScene;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //TODO: Save the matrix generated at the end as a csv or some shit, that way we can do analysis on it with actual tools for data analysis like python.
@@ -42,7 +41,7 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
             fighter1.setThresh(i);
             for (int j=5; j<20; j++){
                 dictionary.get(i).put(j, 0);
-                for (int k=0; k<200; k++) {
+                for (int k=0; k<1000; k++) {
                     fighter2.setThresh(j);
                     this.removeParticipant(fighter1);
                     this.removeParticipant(fighter2);
@@ -61,17 +60,31 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
 
             }
         }
-        for (int i=5; i<20; i++){
-            String output="";
-            for (int j=5; j<20; j++){
-                if (dictionary.get(i).get(j)>=100)
-                    output+=" 1";
-                else
-                    output+=" 0";
 
+        try {
+            String filename="MortalCombatTestMatrix.txt";
+            FileWriter fileWriter=new FileWriter(filename);
+            BufferedWriter writer=new BufferedWriter(fileWriter);
+            for (int i=5; i<20; i++){
+                String output="";
+                for (int j=5; j<20; j++){
+                    if (dictionary.get(i).get(j)>=500)
+                        output+=" 1";
+                    else
+                        output+=" 0";
+
+                }
+                writer.write(output);
+                writer.newLine();
             }
-            System.out.println(output);
+            writer.close();
+
         }
+        catch (IOException ex){
+            logger.log(Level.SEVERE,"Error writing to file");
+            ex.printStackTrace();
+        }
+
 
     }
 }
