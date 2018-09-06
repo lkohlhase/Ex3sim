@@ -1,7 +1,7 @@
 package lukas.kohlhase.Items;
 
 public class MortalMeleeWeaponFactory {
-    LightMortalMeleeWeaponFactory light=new LightMortalMeleeWeaponFactory();
-    MediumMortalMeleeWeaponFactory medium=new MediumMortalMeleeWeaponFactory();
-    HeavyMortalMeleeWeaponFactory heavy=new HeavyMortalMeleeWeaponFactory();
+    public static LightMortalMeleeWeaponFactory light=new LightMortalMeleeWeaponFactory();
+    public static MediumMortalMeleeWeaponFactory medium=new MediumMortalMeleeWeaponFactory();
+    public static HeavyMortalMeleeWeaponFactory heavy=new HeavyMortalMeleeWeaponFactory();
 }

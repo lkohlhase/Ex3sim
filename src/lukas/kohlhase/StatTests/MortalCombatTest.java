@@ -3,6 +3,7 @@ package lukas.kohlhase.StatTests;
 import lukas.kohlhase.Characters.MortalTestAttacker;
 import lukas.kohlhase.CombatActor;
 import lukas.kohlhase.CombatScene;
+import lukas.kohlhase.Items.ArmorFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,9 +15,10 @@ import java.util.logging.Logger;
 public class MortalCombatTest extends CombatScene { //We use this class to test the winrates of various mortal unarmed builds against each other.
     private static final Logger logger=Logger.getLogger("mylogger");
 
-    public MortalCombatTest(){
+    public MortalCombatTest() {
         super(new ArrayList<CombatActor>());
-
+    }
+    public void Testone(){
         MortalTestAttacker fighter1=new MortalTestAttacker("Steve");
         MortalTestAttacker fighter2=new MortalTestAttacker("Karl");
         fighter1.addEnemy(fighter2);
@@ -31,6 +33,7 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
         fighter2.attributes.Strength=5;
         fighter2.attributes.Wits=5;
         fighter2.abilities.Awareness=5;
+        fighter1.armor=ArmorFactory.BuffJacket();
         HashMap<Integer,HashMap<Integer,Integer>> dictionary=new HashMap<>();
 
         this.addParticipant(fighter1);

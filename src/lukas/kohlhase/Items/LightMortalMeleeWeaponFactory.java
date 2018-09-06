@@ -3,7 +3,7 @@ package lukas.kohlhase.Items;
 import java.util.ArrayList;
 
 public class LightMortalMeleeWeaponFactory {
-    public MeleeWeapon Unarmed(){
+    public static MeleeWeapon Unarmed(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.BRAWL);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -13,7 +13,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Unarmed";
         return returnable;
     }
-    public MeleeWeapon Cestus(){
+    public static MeleeWeapon Cestus(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.BRAWL);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -23,7 +23,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Cestus";
         return returnable;
     }
-    public MeleeWeapon Club(){
+    public static MeleeWeapon Club(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -33,7 +33,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Club";
         return returnable;
     }
-    public MeleeWeapon Khatar(){
+    public static MeleeWeapon Khatar(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.BRAWL);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -42,7 +42,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Khatar";
         return returnable;
     }
-    public MeleeWeapon Knife(){
+    public static MeleeWeapon Knife(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -50,7 +50,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Knife";
         return returnable;
     }
-    public MeleeWeapon Sai(){
+    public static MeleeWeapon Sai(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -59,7 +59,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Sai";
         return returnable;
     }
-    public MeleeWeapon ShortSword(){
+    public static MeleeWeapon ShortSword(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -68,7 +68,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Short Sword";
         return returnable;
     }
-    public MeleeWeapon TigerClaws(){
+    public static MeleeWeapon TigerClaws(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.BRAWL);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -77,7 +77,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Tiger Claws";
         return returnable;
     }
-    public MeleeWeapon Whip(){
+    public static MeleeWeapon Whip(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.BRAWL);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -89,7 +89,7 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="Whip";
         return returnable;
     }
-    public MeleeWeapon WarFan(){
+    public static MeleeWeapon WarFan(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MARTIAL);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);

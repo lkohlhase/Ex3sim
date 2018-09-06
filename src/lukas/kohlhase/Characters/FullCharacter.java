@@ -22,22 +22,22 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     String name;
     ArrayList<CombatActor> enemies=new ArrayList<>(); //This is generated when we make the CombatScene.
     ArrayList<CombatActor> allies=new ArrayList<>(); //Same here
-    ArrayList<MeleeWeapon> arnament=new ArrayList<>();
-    Armor armor=new NoArmor(); //If we want a character to have armor, it needs to be explicitly set. We can just replace this value with a proper armor.
+    public ArrayList<MeleeWeapon> arnament=new ArrayList<>();
+    public Armor armor=new NoArmor(); //If we want a character to have armor, it needs to be explicitly set. We can just replace this value with a proper armor.
     public Attributes attributes;
     public Abilities abilities;
     int temporaryDefenseBonus=0;
     HealthLevel health=new HealthLevel();
 
     public FullCharacter() {
-        this.arnament.add(new MeleeWeaponFactory().Unarmed());
+        this.arnament.add(MeleeWeaponFactory.Unarmed());
         this.abilities= new Abilities();
         this.attributes= new Attributes();
         this.name="FullCharacter"+java.util.UUID.randomUUID().toString(); //This ensures uniqueness. Might just randomly generate a recognizable name though.
         this.initiative=3;
     }
     public FullCharacter(String name){
-        this.arnament.add(new MeleeWeaponFactory().Unarmed());
+        this.arnament.add(MeleeWeaponFactory.Unarmed());
         this.abilities= new Abilities();
         this.attributes= new Attributes();
         this.name=name; //This ensures uniqueness. Might just randomly generate a recognizable name though.

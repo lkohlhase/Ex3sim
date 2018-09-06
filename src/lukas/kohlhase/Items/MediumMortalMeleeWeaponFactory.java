@@ -100,7 +100,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Spear";
         return returnable;
     }
-    public MeleeWeapon StraightSword(){
+    public static MeleeWeapon StraightSword(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);

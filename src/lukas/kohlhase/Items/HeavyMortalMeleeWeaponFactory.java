@@ -3,7 +3,7 @@ package lukas.kohlhase.Items;
 import java.util.ArrayList;
 
 public class HeavyMortalMeleeWeaponFactory {
-    public MeleeWeapon GreatAxe(){
+    public static MeleeWeapon GreatAxe(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -15,7 +15,7 @@ public class HeavyMortalMeleeWeaponFactory {
         returnable.name="Great Axe";
         return returnable;
     }
-    public MeleeWeapon GreatSword(){
+    public static MeleeWeapon GreatSword(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -27,7 +27,7 @@ public class HeavyMortalMeleeWeaponFactory {
         returnable.name="Great Sword";
         return returnable;
     }
-    public MeleeWeapon Halberd(){
+    public static MeleeWeapon Halberd(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -39,7 +39,7 @@ public class HeavyMortalMeleeWeaponFactory {
         returnable.name="Halberd";
         return returnable;
     }
-    public MeleeWeapon Tetsubo(){
+    public static MeleeWeapon Tetsubo(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.BASHING);

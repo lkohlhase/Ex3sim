@@ -4,86 +4,87 @@ import java.util.ArrayList;
 import lukas.kohlhase.Items.MeleeWeapon;
 //NOTE: It's important that every weapon has either bashing or lethal tag. else ther will be issues.
 public class MeleeWeaponFactory {
-   public MortalMeleeWeaponFactory mortal=new MortalMeleeWeaponFactory();
-    public MeleeWeapon Unarmed(){
-        return this.mortal.light.Unarmed();
+   public static MortalMeleeWeaponFactory mortal=new MortalMeleeWeaponFactory();
+    public static MeleeWeapon Unarmed(){
+        return mortal.light.Unarmed();
     }
-    public MeleeWeapon Cestus(){
-        return this.mortal.light.Cestus();
+    public static MeleeWeapon Cestus(){
+        return mortal.light.Cestus();
     }
-    public MeleeWeapon Club(){
-        return this.mortal.light.Club();
+    public static MeleeWeapon Club(){
+        return mortal.light.Club();
     }
-    public MeleeWeapon Khatar(){
-        return this.mortal.light.Khatar();
+    public static MeleeWeapon Khatar(){
+        return mortal.light.Khatar();
     }
-    public MeleeWeapon Knife(){
-        return this.mortal.light.Knife();
+    public static MeleeWeapon Knife(){
+        return mortal.light.Knife();
     }
-    public MeleeWeapon Sai(){
-        return this.mortal.light.Sai();
+    public static MeleeWeapon Sai(){
+        return mortal.light.Sai();
     }
-    public MeleeWeapon ShortSword(){
-        return this.mortal.light.ShortSword();
+    public static MeleeWeapon ShortSword(){
+        return mortal.light.ShortSword();
     }
-    public MeleeWeapon TigerClaws(){
-        return this.mortal.light.TigerClaws();
+    public static MeleeWeapon TigerClaws(){
+        return mortal.light.TigerClaws();
     }
-    public MeleeWeapon Whip(){
-        return this.mortal.light.Whip();
+    public static MeleeWeapon Whip(){
+        return mortal.light.Whip();
     }
-    public MeleeWeapon WarFan(){
-        return this.mortal.light.WarFan();
+    public static MeleeWeapon WarFan(){
+        return mortal.light.WarFan();
     }
-    public MeleeWeapon Axe(){
-        return this.mortal.medium.Axe();
+    public static MeleeWeapon Axe(){
+        return mortal.medium.Axe();
     }
-    public MeleeWeapon ChoppingSword(){
-        return this.mortal.medium.ChoppingSword();
+    public static MeleeWeapon ChoppingSword(){
+        return mortal.medium.ChoppingSword();
     }
-    public MeleeWeapon FightingChain(){
-        return this.mortal.medium.FightingChain();
+    public static MeleeWeapon FightingChain(){
+        return mortal.medium.FightingChain();
     }
-    public MeleeWeapon HookSword(){
-        return this.mortal.medium.HookSword();
+    public static MeleeWeapon HookSword(){
+        return mortal.medium.HookSword();
     }
-    public MeleeWeapon Javelin(){
-        return this.mortal.medium.Javelin();
+    public static MeleeWeapon Javelin(){
+        return mortal.medium.Javelin();
     }
-    public MeleeWeapon Mace(){
-        return this.mortal.medium.Mace();
+    public static MeleeWeapon Mace(){
+        return mortal.medium.Mace();
     }
-    public MeleeWeapon SevenSectionStaff(){
-        return this.mortal.medium.SevenSectionStaff();
+    public static MeleeWeapon SevenSectionStaff(){
+        return mortal.medium.SevenSectionStaff();
     }
-    public MeleeWeapon Shield(){
-        return this.mortal.medium.Shield();
+    public static MeleeWeapon Shield(){
+        return mortal.medium.Shield();
     }
-    public MeleeWeapon ShortSpear(){
-        return this.mortal.medium.ShortSpear();
+    public static MeleeWeapon ShortSpear(){
+        return mortal.medium.ShortSpear();
     }
-    public MeleeWeapon SlashingSword(){
-        return this.mortal.medium.SlashingSword();
+    public static MeleeWeapon SlashingSword(){
+        return mortal.medium.SlashingSword();
     }
-    public MeleeWeapon StraightSword(){
-        return this.mortal.medium.StraightSword();
+    public static MeleeWeapon StraightSword(){
+        return mortal.medium.StraightSword();
     }
-    public MeleeWeapon Spear(){
-        return this.mortal.medium.Spear();
+    public static MeleeWeapon Spear(){
+        return mortal.medium.Spear();
     }
-    public MeleeWeapon Staff(){
-        return this.mortal.medium.Staff();
+    public static MeleeWeapon Staff(){
+        return mortal.medium.Staff();
     }
-    public MeleeWeapon Halberd(){
-        return this.mortal.heavy.Halberd();
+    public static MeleeWeapon Halberd(){
+        return mortal.heavy.Halberd();
     }
-    public MeleeWeapon Tetsubo(){
-        return this.mortal.heavy.Tetsubo();
+    public static MeleeWeapon Tetsubo(){
+        return mortal.heavy.Tetsubo();
     }
-    public MeleeWeapon GreatSword(){
-        return this.mortal.heavy.GreatSword();
+    public static MeleeWeapon GreatSword(){
+        return mortal.heavy.GreatSword();
     }
-    public MeleeWeapon GreatAxe(){
-        return this.mortal.heavy.GreatAxe();
+    public static MeleeWeapon GreatAxe(){
+        return mortal.heavy.GreatAxe();
     }
+    //TODO: Add Artifact Weapons
 }
