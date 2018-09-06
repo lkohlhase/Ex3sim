@@ -118,4 +118,13 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Staff";
         return returnable;
     }
+    public MeleeWeapon SlashingSword(){
+        ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
+        tags.add(MeleeWeapon.WeaponTags.MELEE);
+        tags.add(MeleeWeapon.WeaponTags.LETHAL);
+        tags.add(MeleeWeapon.WeaponTags.BALANCED);
+        MeleeWeapon returnable=new  MeleeWeapon(tags,MeleeWeapon.WeaponType.MEDIUM,false );
+        returnable.name="Staff";
+        return returnable;
+    }
 }

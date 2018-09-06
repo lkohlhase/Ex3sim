@@ -35,4 +35,43 @@ public class MeleeWeaponFactory {
     public MeleeWeapon WarFan(){
         return this.mortal.light.WarFan();
     }
+    public MeleeWeapon Axe(){
+        return this.mortal.medium.Axe();
+    }
+    public MeleeWeapon ChoppingSword(){
+        return this.mortal.medium.ChoppingSword();
+    }
+    public MeleeWeapon FightingChain(){
+        return this.mortal.medium.FightingChain();
+    }
+    public MeleeWeapon HookSword(){
+        return this.mortal.medium.HookSword();
+    }
+    public MeleeWeapon Javelin(){
+        return this.mortal.medium.Javelin();
+    }
+    public MeleeWeapon Mace(){
+        return this.mortal.medium.Mace();
+    }
+    public MeleeWeapon SevenSectionStaff(){
+        return this.mortal.medium.SevenSectionStaff();
+    }
+    public MeleeWeapon Shield(){
+        return this.mortal.medium.Shield();
+    }
+    public MeleeWeapon ShortSpear(){
+        return this.mortal.medium.ShortSpear();
+    }
+    public MeleeWeapon SlashingSword(){
+        return this.mortal.medium.SlashingSword();
+    }
+    public MeleeWeapon StraightSword(){
+        return this.mortal.medium.StraightSword();
+    }
+    public MeleeWeapon Spear(){
+        return this.mortal.medium.Spear();
+    }
+    public MeleeWeapon Staff(){
+        return this.mortal.medium.Staff();
+    }
 }
