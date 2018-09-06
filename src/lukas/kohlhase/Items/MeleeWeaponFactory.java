@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import lukas.kohlhase.Items.MeleeWeapon;
 //NOTE: It's important that every weapon has either bashing or lethal tag. else ther will be issues.
 public class MeleeWeaponFactory {
-   MortalMeleeWeaponFactory mortal=new MortalMeleeWeaponFactory();
+   public MortalMeleeWeaponFactory mortal=new MortalMeleeWeaponFactory();
     public MeleeWeapon Unarmed(){
         return this.mortal.light.Unarmed();
     }
