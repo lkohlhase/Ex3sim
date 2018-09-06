@@ -35,13 +35,15 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
 
         this.addParticipant(fighter1);
         this.addParticipant(fighter2);
-        for (int i=5; i<20; i++){
+        for (int i=5; i<30; i++){
             System.out.println(i);
             dictionary.put(i,new HashMap<Integer,Integer>());
             fighter1.setThresh(i);
-            for (int j=5; j<20; j++){
+            for (int j=5; j<30; j++){
                 dictionary.get(i).put(j, 0);
-                for (int k=0; k<1000; k++) {
+                System.out.println("____________________________________________________________________________________________________________________________________");
+                System.out.println("Steve has threshold : " + i + " and Karl has threshold: " + j);
+                for (int k=0; k<10000; k++) {
                     fighter2.setThresh(j);
                     this.removeParticipant(fighter1);
                     this.removeParticipant(fighter2);
@@ -49,8 +51,7 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
                     this.addParticipant(fighter2);
                     this.resetCombat();
 
-                    System.out.println("____________________________________________________________________________________________________________________________________");
-                    System.out.println("Steve has threshold : " + i + " and Karl has threshold: " + j);
+
                     this.joinBattle();
                     this.runCombat();
                     if (!fighter1.getHealth().incaped() && fighter2.getHealth().incaped()) {
@@ -65,14 +66,10 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
             String filename="MortalCombatTestMatrix.txt";
             FileWriter fileWriter=new FileWriter(filename);
             BufferedWriter writer=new BufferedWriter(fileWriter);
-            for (int i=5; i<20; i++){
+            for (int i=5; i<30; i++){
                 String output="";
-                for (int j=5; j<20; j++){
-                    if (dictionary.get(i).get(j)>=500)
-                        output+=" 1";
-                    else
-                        output+=" 0";
-
+                for (int j=5; j<30; j++){
+                    output+=" "+dictionary.get(i).get(j);
                 }
                 writer.write(output);
                 writer.newLine();

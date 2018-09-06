@@ -1,5 +1,6 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Charms;
 
+import lukas.kohlhase.HealthLevel;
 public class CharmCost {
     public int Mote;
     public int Willpower;

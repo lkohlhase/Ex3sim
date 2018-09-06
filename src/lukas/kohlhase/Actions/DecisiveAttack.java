@@ -1,7 +1,7 @@
 package lukas.kohlhase.Actions;
 
 import lukas.kohlhase.*;
-import lukas.kohlhase.Dice.DecisiveValuation;
+import lukas.kohlhase.Charms.CharmCost;
 import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Items.MeleeWeapon;
 
@@ -67,7 +67,7 @@ public class DecisiveAttack implements Attack {
             else {
                 logger.log(Level.FINE,"Attack does no damage, since the hardness was not overcome.");
             }
-            attacker.resetBaseInitiative(state);
+            attacker.resetBaseInitiative();
 
         }
         else {

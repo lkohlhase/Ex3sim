@@ -166,10 +166,7 @@ public class ErrorActor implements CombatActor {
 
     }
 
-    @Override
-    public void resetBaseInitiative(AttackState x) {
 
-    }
 
     @Override
     public void modifyDecisiveDamageDoneAttacker(AttackState x) {
@@ -188,6 +185,11 @@ public class ErrorActor implements CombatActor {
 
     @Override
     public void declareDecisivePostMissDefender(AttackState x) {
+
+    }
+
+    @Override
+    public void resetBaseInitiative() {
 
     }
 

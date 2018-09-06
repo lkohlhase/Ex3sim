@@ -1,4 +1,4 @@
-package lukas.kohlhase;
+package lukas.kohlhase.Charms;
 
 public enum CharmType {
     SIMPLE,

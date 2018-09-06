@@ -1,6 +1,6 @@
 package lukas.kohlhase.Actions;
 import lukas.kohlhase.AttackState;
-import lukas.kohlhase.CharmCost;
+import lukas.kohlhase.Charms.CharmCost;
 import lukas.kohlhase.CombatActor;
 import lukas.kohlhase.Dice.DiceThrow;
 import lukas.kohlhase.Items.MeleeWeapon;

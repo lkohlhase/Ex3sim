@@ -200,7 +200,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
 
     @Override
     public boolean crashbreakable() { //TODO: Implement this properly
-        return roundsSinceCrash > 3 && this.initiative>0;
+        return roundsSinceCrash >= 3 && this.initiative>0;
     }
 
     @Override

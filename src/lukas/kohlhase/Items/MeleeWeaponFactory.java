@@ -12,4 +12,14 @@ public class MeleeWeaponFactory {
         returnable.name="Unarmed";
         return returnable;
     }
+    public MeleeWeapon Cestus(){
+        ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
+        tags.add(MeleeWeapon.WeaponTags.BRAWL);
+        tags.add(MeleeWeapon.WeaponTags.BASHING);
+        tags.add(MeleeWeapon.WeaponTags.SMASHING);
+        tags.add(MeleeWeapon.WeaponTags.WORN);
+        MeleeWeapon returnable=new  MeleeWeapon(tags,MeleeWeapon.WeaponType.LIGHT,false );
+        returnable.name="Cestus";
+        return returnable;
+    }
 }
