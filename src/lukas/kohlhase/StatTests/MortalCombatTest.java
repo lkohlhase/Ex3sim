@@ -33,7 +33,8 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
         fighter2.attributes.Strength=5;
         fighter2.attributes.Wits=5;
         fighter2.abilities.Awareness=5;
-        fighter1.armor=ArmorFactory.BuffJacket();
+        fighter1.armor=ArmorFactory.ArticulatedPlate();
+        fighter2.armor=ArmorFactory.ArticulatedPlate();
         HashMap<Integer,HashMap<Integer,Integer>> dictionary=new HashMap<>();
 
         this.addParticipant(fighter1);
@@ -42,12 +43,12 @@ public class MortalCombatTest extends CombatScene { //We use this class to test 
             System.out.println(i);
             dictionary.put(i,new HashMap<Integer,Integer>());
             fighter1.setThresh(i);
-            for (int j=5; j<30; j++){
-                dictionary.get(i).put(j, 0);
-                System.out.println("____________________________________________________________________________________________________________________________________");
-                System.out.println("Steve has threshold : " + i + " and Karl has threshold: " + j);
+            for (int j=5; j<30; j++){ // Result for no armor, max stats is that attacking at 12+ inititative is good.
+                dictionary.get(i).put(j, 0); //Result for both have buff jackets: attacking at roughly 10ish is good (12 still works, but 10 seems to be slightly better)
+                System.out.println("____________________________________________________________________________________________________________________________________");// Buffjacket versus no armor is a STMOP 70% winrate through the bench. No bonuses for low initiative decisvies though.
+                System.out.println("Steve has threshold : " + i + " and Karl has threshold: " + j);//for Articulated plate versus no armor, it's about hitting early. You insta win the initiative game, so if they decisive you, they have a chance.
                 for (int k=0; k<10000; k++) {
-                    fighter2.setThresh(j);
+                    fighter2.setThresh(j);//Plate versus plate favors hitting at 10 initiative.
                     this.removeParticipant(fighter1);
                     this.removeParticipant(fighter2);
                     this.addParticipant(fighter1);

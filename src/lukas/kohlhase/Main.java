@@ -30,6 +30,7 @@ public class Main {
 //        CombatScene scene=new CombatScene(fighters);
 //        scene.runCombat();
         MortalCombatTest testerino=new MortalCombatTest();
+        testerino.Testone();
 
 
     }
