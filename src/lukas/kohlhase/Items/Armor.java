@@ -25,7 +25,7 @@ public class Armor {
                     MobilityPenalty = 0;
                     AttunementCost = 0;
                 }
-
+                break;
             case MEDIUM:
                 if (Artifact) {
                     Hardness = 7;
@@ -38,6 +38,7 @@ public class Armor {
                     MobilityPenalty = 1;
                     AttunementCost = 0;
                 }
+                break;
             case HEAVY:
                 if (Artifact) {
                     Hardness = 10;
@@ -50,11 +51,13 @@ public class Armor {
                     MobilityPenalty = 2;
                     AttunementCost = 0;
                 }
+                break;
             case UNARMORED:
                 Hardness=0;
                 Soak=0;
                 MobilityPenalty=0;
                 AttunementCost=0;
+                break;
         }
     }
 //Don't think we need setters. Not behaviour we really want.

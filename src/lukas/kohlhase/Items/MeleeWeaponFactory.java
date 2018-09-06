@@ -74,4 +74,16 @@ public class MeleeWeaponFactory {
     public MeleeWeapon Staff(){
         return this.mortal.medium.Staff();
     }
+    public MeleeWeapon Halberd(){
+        return this.mortal.heavy.Halberd();
+    }
+    public MeleeWeapon Tetsubo(){
+        return this.mortal.heavy.Tetsubo();
+    }
+    public MeleeWeapon GreatSword(){
+        return this.mortal.heavy.GreatSword();
+    }
+    public MeleeWeapon GreatAxe(){
+        return this.mortal.heavy.GreatAxe();
+    }
 }
