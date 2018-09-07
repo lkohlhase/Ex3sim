@@ -74,9 +74,7 @@ public class MeleeWeaponFactory {
     public static MeleeWeapon Staff(){
         return mortal.medium.Staff();
     }
-    public static MeleeWeapon Halberd(){
-        return mortal.heavy.Halberd();
-    }
+    public static MeleeWeapon Halberd(){ return mortal.heavy.Halberd(); }
     public static MeleeWeapon Tetsubo(){
         return mortal.heavy.Tetsubo();
     }
@@ -87,4 +85,7 @@ public class MeleeWeaponFactory {
         return mortal.heavy.GreatAxe();
     }
     //TODO: Add Artifact Weapons
+    public static ArrayList<MeleeWeapon> all(){
+        return mortal.all();
+    }
 }

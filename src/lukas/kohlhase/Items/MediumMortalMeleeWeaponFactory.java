@@ -1,9 +1,10 @@
 package lukas.kohlhase.Items;
 
+import javax.crypto.Mac;
 import java.util.ArrayList;
 
 public class MediumMortalMeleeWeaponFactory {
-    public MeleeWeapon Axe(){
+    public static MeleeWeapon Axe(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -13,7 +14,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Axe";
         return returnable;
     }
-    public MeleeWeapon ChoppingSword(){
+    public static MeleeWeapon ChoppingSword(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -22,7 +23,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Chopping Sword";
         return returnable;
     }
-    public MeleeWeapon FightingChain(){
+    public static MeleeWeapon FightingChain(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MARTIAL);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -34,7 +35,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Fighting Chain";
         return returnable;
     }
-    public MeleeWeapon HookSword(){
+    public static MeleeWeapon HookSword(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MARTIAL);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -43,7 +44,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Hook Sword";
         return returnable;
     }
-    public MeleeWeapon Javelin(){
+    public static MeleeWeapon Javelin(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -52,7 +53,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Javelin";
         return returnable;
     }
-    public MeleeWeapon Mace(){
+    public static MeleeWeapon Mace(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -61,7 +62,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Mace";
         return returnable;
     }
-    public MeleeWeapon SevenSectionStaff(){
+    public static MeleeWeapon SevenSectionStaff(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MARTIAL);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -71,7 +72,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Seven Section Staff";
         return returnable;
     }
-    public MeleeWeapon Shield(){
+    public static MeleeWeapon Shield(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -80,7 +81,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Shield";
         return returnable;
     }
-    public MeleeWeapon ShortSpear(){
+    public static MeleeWeapon ShortSpear(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -90,7 +91,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Short Spear";
         return returnable;
     }
-    public MeleeWeapon Spear(){
+    public static MeleeWeapon Spear(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
@@ -109,7 +110,7 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Straight Sword";
         return returnable;
     }
-    public MeleeWeapon Staff(){
+    public static MeleeWeapon Staff(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.BASHING);
@@ -118,13 +119,30 @@ public class MediumMortalMeleeWeaponFactory {
         returnable.name="Staff";
         return returnable;
     }
-    public MeleeWeapon SlashingSword(){
+    public static MeleeWeapon SlashingSword(){
         ArrayList<MeleeWeapon.WeaponTags> tags=new ArrayList<>();
         tags.add(MeleeWeapon.WeaponTags.MELEE);
         tags.add(MeleeWeapon.WeaponTags.LETHAL);
         tags.add(MeleeWeapon.WeaponTags.BALANCED);
         MeleeWeapon returnable=new  MeleeWeapon(tags,MeleeWeapon.WeaponType.MEDIUM,false );
         returnable.name="Staff";
+        return returnable;
+    }
+    public static ArrayList<MeleeWeapon> all(){
+        ArrayList<MeleeWeapon> returnable=new ArrayList<>();
+        returnable.add(Axe());
+        returnable.add(ChoppingSword());
+        returnable.add(FightingChain());
+        returnable.add(HookSword());
+        returnable.add(Javelin());
+        returnable.add(Mace());
+        returnable.add(SevenSectionStaff());
+        returnable.add(Shield());
+        returnable.add(ShortSpear());
+        returnable.add(Spear());
+        returnable.add(StraightSword());
+        returnable.add(Staff());
+        returnable.add(SlashingSword());
         return returnable;
     }
 }

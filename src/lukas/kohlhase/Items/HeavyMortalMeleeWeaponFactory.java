@@ -51,4 +51,11 @@ public class HeavyMortalMeleeWeaponFactory {
         returnable.name="Tetsubo";
         return returnable;
     }
+    public static ArrayList<MeleeWeapon> all(){
+        ArrayList<MeleeWeapon> returnable=new ArrayList<>();
+        returnable.add(GreatAxe());
+        returnable.add(GreatSword());
+        returnable.add(Tetsubo());
+        return returnable;
+    }
 }

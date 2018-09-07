@@ -98,4 +98,18 @@ public class LightMortalMeleeWeaponFactory {
         returnable.name="War Fan";
         return returnable;
     }
+    public static ArrayList<MeleeWeapon> all() {
+        ArrayList<MeleeWeapon> returnable=new ArrayList<>();
+        returnable.add(Unarmed());
+        returnable.add(Cestus());
+        returnable.add(Club());
+        returnable.add(Khatar());
+        returnable.add(Knife());
+        returnable.add(Sai());
+        returnable.add(ShortSword());
+        returnable.add(TigerClaws());
+        returnable.add(Whip());
+        returnable.add(WarFan());
+        return returnable;
+    }
 }
