@@ -14,7 +14,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     /*
         Intended for inheritance from, so that basic calculations of dicepools etc. from stats is possible
      */
-    private static final Logger logger=Logger.getLogger("mylogger");
+    static final Logger logger=Logger.getLogger("mylogger");
 
     private int initiative;
     int roundsInCrash=10; //Code for isn't crashed.

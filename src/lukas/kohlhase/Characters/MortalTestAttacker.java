@@ -5,6 +5,7 @@ import lukas.kohlhase.Actions.Attack;
 import lukas.kohlhase.CombatActor;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class MortalTestAttacker extends FullCharacter { // A simple full character that acts as a mortal. Whithering attacks till his initiative is over thresh (default: 17) and then decisive attacks.
     private int thresh;
@@ -48,6 +49,10 @@ public class MortalTestAttacker extends FullCharacter { // A simple full charact
     }
 
     public void setThresh(int thresh) {
-        this.thresh = thresh;
+        if (thresh>0)
+            this.thresh = thresh;
+        else{
+            logger.log(Level.WARNING,"Tried to set negative threshhold, this is not okay.");
+        }
     }
 }
