@@ -51,6 +51,9 @@ public class MeleeWeapon {
         return this.Defense;
     }
 
+    public MeleeWeapon(MeleeWeapon tbc){ //Copy Constructor
+        this(tbc.Tags,tbc.Type,tbc.Artifact);
+    }
     public MeleeWeapon(ArrayList<WeaponTags> tags, WeaponType type, Boolean artifact) {
         Tags = tags;
         Type = type;

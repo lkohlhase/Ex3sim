@@ -19,6 +19,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
     private int initiative;
     int roundsInCrash=10; //Code for isn't crashed.
     int roundsSinceCrash=10; //Hasn't recently been crashed
+
     String name;
     ArrayList<CombatActor> enemies=new ArrayList<>(); //This is generated when we make the CombatScene.
     ArrayList<CombatActor> allies=new ArrayList<>(); //Same here
@@ -52,7 +53,15 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
         this.abilities = abilities;
         this.initiative=3;
     }
-
+    public FullCharacter(FullCharacter a){
+        for (MeleeWeapon weapon: a.arnament){
+            this.arnament.add(new MeleeWeapon(weapon));
+        }
+        this.name=a.name;
+        this.attributes=a.attributes;
+        this.abilities=a.abilities;
+        this.initiative=a.initiative;
+    }
     public ArrayList<Attack> generateMeleeAttacks() {
         /*
         We generate basic attacks from the melee weapons that we have available.
