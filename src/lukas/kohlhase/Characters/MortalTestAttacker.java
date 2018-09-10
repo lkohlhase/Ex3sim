@@ -44,7 +44,7 @@ public class MortalTestAttacker extends FullCharacter { // A simple full charact
                 }
             }
         }
-        System.out.println("There was an error with choosing attacks. This is literally just in for testing purposes");
+        logger.log(Level.SEVERE,"There was an error with choosing attacks. Please fix");
         return possibleAttacks.get(0);//When all else fails just return the first element. This is unreachable and really only put in to make the IDE neater. TODO: think about making a custom exception for this.
 
     }
