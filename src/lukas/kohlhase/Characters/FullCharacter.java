@@ -85,7 +85,9 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
         ArrayList<Attack> possibleattacks = new ArrayList<Attack>();
         for (CombatActor enemy : enemies) { //Generate an attack option for every weapon and every enemy you have.
             for (MeleeWeapon weapon : arnament) {
+                System.out.println("I am definitely a weapon, in fact I am: "+weapon.name);
                 for (String possibility : weapon.usablewith) {
+                    System.out.println("I am usable with stuff, in fact I am "+possibility);
 
                     if (weapon.usablewith.contains("MELEE") && !possibility.equals("IMPROVISEDBRAWL")) { //If the weapon can be used with Melee, then make melee versions of every attack.
                         WitheringAttack tempWithering = new WitheringAttack(this, enemy);
@@ -155,6 +157,40 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
                                 break; //TODO: Implement whenever we get around to doing this. Not sure we'll ever add this tag. Probably will just manually add Thrown weapons and add stuff here.
                         }
                     possibleattacks.add(tempWitheringB);
+
+                    }
+                    if (weapon.usablewith.contains("MARTIAL") && !possibility.equals("IMPROVISEDMELEE")) { //If the weapon can be used with Melee, then make BRAWL versions of every attack.
+                        WitheringAttack tempWitheringB = new WitheringAttack(this, enemy);
+                        tempWitheringB.baseAccuracy = weapon.getAccuracy();
+                        tempWitheringB.baseAttackdice = this.attributes.Dexterity + this.abilities.Brawl; //TODO: Implement specialties.
+                        tempWitheringB.weapon=weapon;
+                        tempWitheringB.woundpenalty=this.health.woundpenalty();
+                        switch (possibility) {
+                            case "BRAWL":
+                                break;
+                            case "CHOPPING":
+                                tempWitheringB.cost.TempDefence--;
+                            case "DISARMING":
+                                //TODO: Implement when we do disarming stuff. Essentially generate a completely new disarming attack with the weapon here.
+                                break;
+                            case "IMPROVISEDBRAWL":
+                                tempWitheringB.cost.Initiative += 1;
+                            case "GRAPPLING":
+                                break; //TODO: Implement when we do grappling stuff (aka never)
+                            case "MELEE":
+                                break; //Baseline version needs no modification
+                            case "MARTIAL":
+                                break; //Implement when we actually include martial arts
+                            case "PIERCING":
+                                tempWitheringB.ignoredArmorSoak = 4;
+                                tempWitheringB.cost.Initiative += 1;
+                            case "SMASHING":
+                                tempWitheringB.cost.TempDefence -= 2;
+                                tempWitheringB.cost.Initiative += 2;
+                            case "THROWN":
+                                break; //TODO: Implement whenever we get around to doing this. Not sure we'll ever add this tag. Probably will just manually add Thrown weapons and add stuff here.
+                        }
+                        possibleattacks.add(tempWitheringB);
 
                     }
 
