@@ -1,6 +1,7 @@
 package lukas.kohlhase.Characters;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +19,21 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
 
     private int initiative;
     int roundsInCrash=10; //Code for isn't crashed.
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FullCharacter)) return false;
+        FullCharacter that = (FullCharacter) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name);
+    }
+
     int roundsSinceCrash=10; //Hasn't recently been crashed
 
     String name;
@@ -496,6 +512,9 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
             }
         }
         this.roundsInCrash++;
+    }
+    public Boolean isDead(){
+        return this.getHealth().incaped();
     }
 }
 //TODO: think about implementing Initiative shift.

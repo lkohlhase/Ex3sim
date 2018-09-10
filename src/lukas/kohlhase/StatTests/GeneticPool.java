@@ -3,6 +3,7 @@ package lukas.kohlhase.StatTests;
 import lukas.kohlhase.Characters.FullCharacter;
 import lukas.kohlhase.Characters.MortalTestAttacker;
 import lukas.kohlhase.CombatActor;
+import lukas.kohlhase.CombatScene;
 import lukas.kohlhase.Items.*;
 
 import java.util.ArrayList;
@@ -12,15 +13,51 @@ import java.util.logging.Logger;
 
 public class GeneticPool {
     private static final Logger logger=Logger.getLogger("mylogger");
-    public Mutater mutater = new MortalThreshWeaponAttsMutater();
-    private ArrayList<MortalTestAttacker> participants;
+    public Mutater mutater;
+    private ArrayList<FullCharacter> participants;
     private Random rand=new Random();
     public GeneticPool(ArrayList<MortalTestAttacker> prototypes, int numcopies, String mutationtype){
+        for (MortalTestAttacker proto: prototypes) {
+            for (int i=0; i<numcopies; i++){
+                participants.add(new MortalTestAttacker(proto));
+            }
 
-        System.out.println("Not yet implemented");
+        }
     }
     public void runPool(int numfights){
-        System.out.println("Not yet Implemented");
+        for (int i=0; i<numfights; i++){
+
+            FullCharacter fighter1=participants.get(rand.nextInt(participants.size()));
+            FullCharacter fighter2=participants.get(rand.nextInt(participants.size()));
+            participants.remove(fighter1);
+            participants.remove(fighter2);
+            while (fighter1==fighter2){
+                fighter2=participants.get(rand.nextInt(participants.size()));
+            }
+            ArrayList<CombatActor> fighters=new ArrayList<>();
+            fighters.add(fighter1);
+            fighters.add(fighter2);
+            CombatScene scene=new CombatScene(fighters);
+            scene.fullCombat();
+            FullCharacter deadfighter;
+            if (fighter1.isDead()){
+                deadfighter=fighter1;
+                fighter1.getHealth().reset();
+                participants.add(fighter1);
+            }
+
+            else {
+                deadfighter = fighter2;
+                fighter2.getHealth().reset();
+                participants.add(fighter2);
+            }
+            if (rand.nextInt(2)==1) { //50% of mutation on lost fight
+                mutater.mutate(deadfighter);
+                deadfighter.getHealth().reset();
+                participants.add(deadfighter);
+            }
+        }
+        //TODO: Implement some reporting on the current state of the genetic pool.
     }
 
 }

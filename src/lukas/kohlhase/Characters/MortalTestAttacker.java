@@ -16,6 +16,10 @@ public class MortalTestAttacker extends FullCharacter { // A simple full charact
         this.name="MortalTestAttacker"+java.util.UUID.randomUUID().toString();
         this.thresh=17;
     }
+    public MortalTestAttacker(MortalTestAttacker a){
+        super(a);
+        this.thresh=a.thresh;
+    }
     public MortalTestAttacker(String name){
         super();
         this.name=name;
