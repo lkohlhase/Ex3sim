@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class GeneticPool {
     private static final Logger logger=Logger.getLogger("mylogger");
-    public Mutater mutater;
+    public Mutater mutater=new MortalThreshWeaponAttsMutater();
     public ArrayList<FullCharacter> participants;
     private Random rand=new Random();
     public GeneticPool(ArrayList<MortalTestAttacker> prototypes, int numcopies){
@@ -41,24 +41,30 @@ public class GeneticPool {
             CombatScene scene=new CombatScene(fighters);
             scene.fullCombat();
             FullCharacter deadfighter;
+            FullCharacter winner;
             if (fighter1.isDead()){
                 deadfighter=fighter1;
-                fighter1.getHealth().reset();
-                participants.add(fighter1);
-            }
-
-            else {
-                deadfighter = fighter2;
+                winner=fighter2;
                 fighter2.getHealth().reset();
                 participants.add(fighter2);
             }
+            else {
+                deadfighter = fighter2;
+                winner=fighter1;
+                fighter1.getHealth().reset();
+                participants.add(fighter1);
+            }
             if (rand.nextInt(2)==1) { //50% of mutation on lost fight
-                mutater.mutate(deadfighter);
+                FullCharacter mutantson=new FullCharacter(winner);
+                mutater.mutate(mutantson);
+                mutantson.getHealth().reset();
+                participants.add(mutantson);
+            }
+            else{
                 deadfighter.getHealth().reset();
                 participants.add(deadfighter);
             }
         }
-        //TODO: Implement some reporting on the current state of the genetic pool.
     }
 
 }

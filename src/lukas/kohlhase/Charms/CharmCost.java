@@ -16,4 +16,12 @@ public class CharmCost {
         Initiative=init;
         TempDefence=0; //Always initialized to 0, unless specifically stated. Not generally a cost that is used.
     }
+    public CharmCost(){
+        Mote=0;
+        Willpower=0;
+        this.Health=new HealthLevel(); //TODO: Make this zero at some point, I never use it anyway
+        this.Anima=0;
+        this.Initiative=0;
+        this.TempDefence=0;
+    }
 }

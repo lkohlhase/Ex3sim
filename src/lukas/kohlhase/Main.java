@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         Logger logger=Logger.getLogger("mylogger");
-        logger.setLevel(Level.FINE);
+        logger.setLevel(Level.INFO);
         Logger.getGlobal().getParent().getHandlers()[0].setLevel(Level.FINER);
         MortalTestAttacker fighter1=new MortalTestAttacker();
         fighter1.setName("Steve");
@@ -35,7 +35,6 @@ public class Main {
         int attributeTotal=10;
         ArrayList<MortalTestAttacker> prototypes=new ArrayList<>();
         for (MeleeWeapon Weapon: MeleeWeaponFactory.all()){
-            System.out.println(Weapon.name);
             for(int dex=1; dex<=5; dex++){
                 for(int stam=1;stam<=5; stam++){
                     int str=attributeTotal-dex-stam;
@@ -54,18 +53,16 @@ public class Main {
                 }
             }
         }
-        GeneticPool genpool=new GeneticPool(new ArrayList<MortalTestAttacker>(prototypes.subList(0,10)),1);
-        System.out.println(genpool.participants.size());
-        System.out.println(prototypes.size());
-        MortalTestAttackerPoolAnalyzer analyzer=new MortalTestAttackerPoolAnalyzer(prototypes);
-        for (String key: analyzer.weaponstats.keySet()){
-             System.out.println(key+":"+analyzer.weaponstats.get(key));
+        GeneticPool genpool=new GeneticPool(prototypes,5);
+        MortalTestAttackerPoolAnalyzer analyzer=new MortalTestAttackerPoolAnalyzer(genpool);
+        for (int j=0; j<2; j++){
+            for(int i: analyzer.dexstats.keySet()){
+                System.out.println(i+":"+analyzer.dexstats.get(i));
+            }
+            genpool.runPool(1);
         }
-        MeleeWeapon asdf=MeleeWeaponFactory.Cestus();
-        System.out.println(analyzer.key(fighter1));
-        System.out.println(((MortalTestAttacker)prototypes.get(0)).arnament.get(0).name);
-        FullCharacter testerino=(FullCharacter)prototypes.get(0);
-        System.out.println(testerino.arnament.get(0).name);
+
+
 
     }
 

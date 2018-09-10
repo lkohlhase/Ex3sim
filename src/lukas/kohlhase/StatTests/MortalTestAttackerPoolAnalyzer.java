@@ -4,7 +4,6 @@ import lukas.kohlhase.Characters.FullCharacter;
 import lukas.kohlhase.Characters.MortalTestAttacker;
 import lukas.kohlhase.Items.MeleeWeapon;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MortalTestAttackerPoolAnalyzer {
@@ -17,15 +16,10 @@ public class MortalTestAttackerPoolAnalyzer {
     public HashMap<String, Integer> weaponstats = new HashMap<>();
 
 
-    public MortalTestAttackerPoolAnalyzer(ArrayList<MortalTestAttacker> list) {
-        System.out.println("I am here, hear me roar");
-        System.out.println(list.get(0).arnament.get(0).name);
-        for (FullCharacter dude : list) { // We fill our various hashmaps with values whenever we discover an element.
+    public MortalTestAttackerPoolAnalyzer(GeneticPool pool) {
+        for (FullCharacter dude : pool.participants) { // We fill our various hashmaps with values whenever we discover an element.
             if (dude instanceof MortalTestAttacker) {
                 MortalTestAttacker mdude = (MortalTestAttacker) dude;
-                System.out.println(mdude.getName());
-                System.out.println(mdude.arnament);
-                System.out.println(mdude.arnament.get(0).name);
                 String identifier = key(mdude);
                 if (deaggregated.containsKey(identifier)) {
                     deaggregated.put(identifier, deaggregated.get(identifier) + 1);

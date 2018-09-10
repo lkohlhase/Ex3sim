@@ -108,6 +108,8 @@ public class MeleeWeapon {
                     this.AttunementCost = 0;
                 }
                 break;
+            default:
+                System.out.println("BIG DOODOO");
         }
         //Now we modify the weapons according to what tags they have.
         ArrayList<WeaponTags> encountered=new ArrayList<>();

@@ -15,7 +15,7 @@ public class WitheringAttack implements Attack{
     public int baseAttackdice;
     public int baseAccuracy;
     public int woundpenalty;
-    public CharmCost cost;
+    public CharmCost cost=new CharmCost();
     public int ignoredArmorSoak=0;
     int attackdice,dv,defsoak, thresholdSuccesses,rawdamage,postsoakdice,overwhelming;
     public  WitheringAttack(CombatActor A, CombatActor B){
