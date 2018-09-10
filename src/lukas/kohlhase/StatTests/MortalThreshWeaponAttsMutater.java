@@ -18,7 +18,9 @@ public class MortalThreshWeaponAttsMutater implements Mutater {
 
     @Override
     public void mutate(FullCharacter mutant) {
+        logger.log(Level.SEVERE,"I am a mutant watch me roar");
         if(mutant instanceof MortalTestAttacker){
+            logger.log(Level.SEVERE, "Alas I am mortal again");
             mutate((MortalTestAttacker) mutant);
         }
         else{

@@ -55,7 +55,7 @@ public class GeneticPool {
                 participants.add(fighter1);
             }
             if (rand.nextInt(2)==1) { //50% of mutation on lost fight
-                FullCharacter mutantson=new FullCharacter(winner);
+                FullCharacter mutantson=new FullCharacter(winner); //TODO: Fix this now reeeeeeeeeeeeeeeeeeeeeeeeeeeee.
                 mutater.mutate(mutantson);
                 mutantson.getHealth().reset();
                 participants.add(mutantson);

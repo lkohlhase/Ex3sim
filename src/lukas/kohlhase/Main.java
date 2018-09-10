@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         Logger logger=Logger.getLogger("mylogger");
-        logger.setLevel(Level.INFO);
+        logger.setLevel(Level.SEVERE);
         Logger.getGlobal().getParent().getHandlers()[0].setLevel(Level.FINER);
         MortalTestAttacker fighter1=new MortalTestAttacker();
         fighter1.setName("Steve");
@@ -59,9 +59,8 @@ public class Main {
             for(int i: analyzer.dexstats.keySet()){
                 System.out.println(i+":"+analyzer.dexstats.get(i));
             }
-            genpool.runPool(1);
+            genpool.runPool(2);
         }
-
 
 
     }

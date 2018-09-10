@@ -85,9 +85,7 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
         ArrayList<Attack> possibleattacks = new ArrayList<Attack>();
         for (CombatActor enemy : enemies) { //Generate an attack option for every weapon and every enemy you have.
             for (MeleeWeapon weapon : arnament) {
-                System.out.println("I am definitely a weapon, in fact I am: "+weapon.name);
                 for (String possibility : weapon.usablewith) {
-                    System.out.println("I am usable with stuff, in fact I am "+possibility);
 
                     if (weapon.usablewith.contains("MELEE") && !possibility.equals("IMPROVISEDBRAWL")) { //If the weapon can be used with Melee, then make melee versions of every attack.
                         WitheringAttack tempWithering = new WitheringAttack(this, enemy);
