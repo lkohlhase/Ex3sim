@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class GeneticPool {
     private static final Logger logger=Logger.getLogger("mylogger");
     public Mutater mutater;
-    private ArrayList<FullCharacter> participants;
+    public ArrayList<FullCharacter> participants;
     private Random rand=new Random();
     public GeneticPool(ArrayList<MortalTestAttacker> prototypes, int numcopies, String mutationtype){
         for (MortalTestAttacker proto: prototypes) {

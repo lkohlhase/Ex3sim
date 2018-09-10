@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         Logger logger=Logger.getLogger("mylogger");
-        logger.setLevel(Level.INFO);
+        logger.setLevel(Level.FINE);
         Logger.getGlobal().getParent().getHandlers()[0].setLevel(Level.FINER);
         MortalTestAttacker fighter1=new MortalTestAttacker();
         fighter1.setName("Steve");
@@ -29,10 +29,30 @@ public class Main {
         fighter1.abilities.Brawl=5;
         fighter1.attributes.Wits=5;
         fighter1.abilities.Awareness=5;
+        fighter1.attributes.Strength=3;
+        fighter1.attributes.Stamina=3;
 //        CombatScene scene=new CombatScene(fighters);
 //        scene.runCombat();
-        Mutater mutato=new MortalThreshWeaponAttsMutater();
-        ((MortalThreshWeaponAttsMutater) mutato).mutate(fighter1);
+        int attributeTotal=10;
+        ArrayList<CombatActor> prototypes=new ArrayList<CombatActor>();
+        for (MeleeWeapon Weapon: MeleeWeaponFactory.all()){
+            for(int dex=1; dex<=5; dex++){
+                for(int stam=1;stam<=5; stam++){
+                    int str=attributeTotal-dex-stam;
+                    if(1<= str && str<= 5){
+                        for(int thresh=3; thresh<=25; thresh++){
+                            MortalTestAttacker prot= new MortalTestAttacker();
+                            prot.setThresh(thresh);
+                            prot.attributes.Dexterity=dex;
+                            prot.attributes.Stamina=stam;
+                            prot.attributes.Strength=str;
+                            prot.arnament=new ArrayList<>();
+                            prot.arnament.add(Weapon);
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }
