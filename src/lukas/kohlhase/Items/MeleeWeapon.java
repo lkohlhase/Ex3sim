@@ -16,7 +16,7 @@ public class MeleeWeapon {
     Boolean Artifact;
     public enum WeaponType{LIGHT,MEDIUM,HEAVY}
     public WeaponType Type; // We can generate the private stuff according to the tags and the type of weapon
-    public String name="unspecified";
+    public String name;
     public damageType damagetype;
     public ArrayList<String> usablewith = new ArrayList<>();
     public void setAccuracy(int accuracy) {
@@ -53,6 +53,7 @@ public class MeleeWeapon {
 
     public MeleeWeapon(MeleeWeapon tbc){ //Copy Constructor
         this(tbc.Tags,tbc.Type,tbc.Artifact);
+        this.name=tbc.name;
     }
     public MeleeWeapon(ArrayList<WeaponTags> tags, WeaponType type, Boolean artifact) {
         Tags = tags;

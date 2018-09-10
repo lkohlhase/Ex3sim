@@ -207,7 +207,10 @@ public class FullCharacter implements CombatActor { //TODO: Change to a logging 
                 initiative-=x;
         }
     }
-
+    public void setWeapon(MeleeWeapon wep){
+        this.arnament=new ArrayList<MeleeWeapon>();
+        this.arnament.add(wep);
+    }
     public int getInitiative(){
         return initiative;
     }

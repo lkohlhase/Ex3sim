@@ -16,7 +16,8 @@ public class GeneticPool {
     public Mutater mutater;
     public ArrayList<FullCharacter> participants;
     private Random rand=new Random();
-    public GeneticPool(ArrayList<MortalTestAttacker> prototypes, int numcopies, String mutationtype){
+    public GeneticPool(ArrayList<MortalTestAttacker> prototypes, int numcopies){
+        participants=new ArrayList<FullCharacter>();
         for (MortalTestAttacker proto: prototypes) {
             for (int i=0; i<numcopies; i++){
                 participants.add(new MortalTestAttacker(proto));

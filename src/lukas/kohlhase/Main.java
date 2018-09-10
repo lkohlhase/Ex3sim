@@ -3,9 +3,7 @@ import lukas.kohlhase.Characters.FullCharacter;
 import lukas.kohlhase.Characters.MortalTestAttacker;
 import lukas.kohlhase.Items.MeleeWeapon;
 import lukas.kohlhase.Items.MeleeWeaponFactory;
-import lukas.kohlhase.StatTests.MortalCombatTest;
-import lukas.kohlhase.StatTests.MortalThreshWeaponAttsMutater;
-import lukas.kohlhase.StatTests.Mutater;
+import lukas.kohlhase.StatTests.*;
 
 import java.util.*;
 import java.util.logging.Level;
@@ -31,11 +29,13 @@ public class Main {
         fighter1.abilities.Awareness=5;
         fighter1.attributes.Strength=3;
         fighter1.attributes.Stamina=3;
+        fighter1.setWeapon(MeleeWeaponFactory.Cestus());
 //        CombatScene scene=new CombatScene(fighters);
 //        scene.runCombat();
         int attributeTotal=10;
-        ArrayList<CombatActor> prototypes=new ArrayList<CombatActor>();
+        ArrayList<MortalTestAttacker> prototypes=new ArrayList<>();
         for (MeleeWeapon Weapon: MeleeWeaponFactory.all()){
+            System.out.println(Weapon.name);
             for(int dex=1; dex<=5; dex++){
                 for(int stam=1;stam<=5; stam++){
                     int str=attributeTotal-dex-stam;
@@ -48,11 +48,26 @@ public class Main {
                             prot.attributes.Strength=str;
                             prot.arnament=new ArrayList<>();
                             prot.arnament.add(Weapon);
+                            prototypes.add(prot);
                         }
                     }
                 }
             }
         }
+        GeneticPool genpool=new GeneticPool(new ArrayList<MortalTestAttacker>(prototypes.subList(0,10)),1);
+        System.out.println(genpool.participants.size());
+        System.out.println(prototypes.size());
+        MortalTestAttackerPoolAnalyzer analyzer=new MortalTestAttackerPoolAnalyzer(prototypes);
+        for (String key: analyzer.weaponstats.keySet()){
+             System.out.println(key+":"+analyzer.weaponstats.get(key));
+        }
+        MeleeWeapon asdf=MeleeWeaponFactory.Cestus();
+        System.out.println(analyzer.key(fighter1));
+        System.out.println(((MortalTestAttacker)prototypes.get(0)).arnament.get(0).name);
+        FullCharacter testerino=(FullCharacter)prototypes.get(0);
+        System.out.println(testerino.arnament.get(0).name);
 
     }
+
+
 }

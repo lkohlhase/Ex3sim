@@ -2,7 +2,7 @@ package lukas.kohlhase.Items;
 
 import java.util.ArrayList;
 import lukas.kohlhase.Items.MeleeWeapon;
-//NOTE: It's important that every weapon has either bashing or lethal tag. else ther will be issues.
+//NOTE: It's important that every weapon has either bashing or lethal tag. else there will be issues.
 public class MeleeWeaponFactory {
     public static MortalMeleeWeaponFactory mortal;
     public static MeleeWeapon Unarmed(){
