@@ -38,12 +38,12 @@ public class MortalThreshWeaponAttsMutater implements Mutater {
                                 if (mutant.attributes.Dexterity < 5) {
                                     Boolean stam = rand.nextInt(2) == 0;
                                     if (mutant.attributes.Stamina > 1 && stam) {
-                                        logger.log(Level.INFO, "Increasing dex from "+mutant.attributes.Dexterity + " + to " +(mutant.attributes.Dexterity+1)+" and decreasing stamina from "+mutant.attributes.Stamina+" to "+(mutant.attributes.Stamina+1));
+                                        logger.log(Level.INFO, "Increasing dex from "+mutant.attributes.Dexterity + " + to " +(mutant.attributes.Dexterity+1)+" and decreasing stamina from "+mutant.attributes.Stamina+" to "+(mutant.attributes.Stamina-1));
                                         mutant.attributes.Dexterity++;
                                         mutant.attributes.Stamina--;
                                     }
                                     if (mutant.attributes.Strength > 1 && !stam) {
-                                        logger.log(Level.INFO, "Increasing dex and decreasing strength");
+                                        logger.log(Level.INFO, "Increasing dex from "+mutant.attributes.Dexterity + " + to " +(mutant.attributes.Dexterity+1)+" and decreasing strength from "+mutant.attributes.Strength+" to "+(mutant.attributes.Strength-1));
 
                                         mutant.attributes.Dexterity++;
                                         mutant.attributes.Strength--;
@@ -55,12 +55,12 @@ public class MortalThreshWeaponAttsMutater implements Mutater {
                                 if (mutant.attributes.Strength < 5) {
                                     Boolean stam = rand.nextInt(2) == 0;
                                     if (mutant.attributes.Stamina > 1 && stam) {
-                                        logger.log(Level.INFO, "Increasing Strength and decreasing stamina");
+                                        logger.log(Level.INFO, "Increasing strength from "+mutant.attributes.Strength + " + to " +(mutant.attributes.Strength+1)+" and decreasing stamina from "+mutant.attributes.Stamina+" to "+(mutant.attributes.Stamina-1));
                                         mutant.attributes.Strength++;
                                         mutant.attributes.Stamina--;
                                     }
                                     if (mutant.attributes.Dexterity > 1 && !stam) {
-                                        logger.log(Level.INFO, "Increasing strength and decreasing dex");
+                                        logger.log(Level.INFO, "Increasing strength from "+mutant.attributes.Strength + " + to " +(mutant.attributes.Strength+1)+" and decreasing Dexterity from "+mutant.attributes.Dexterity+" to "+(mutant.attributes.Dexterity-1));
 
                                         mutant.attributes.Dexterity--;
                                         mutant.attributes.Strength++;
@@ -72,12 +72,13 @@ public class MortalThreshWeaponAttsMutater implements Mutater {
                                 if (mutant.attributes.Stamina < 5) {
                                     Boolean dex = rand.nextInt(2) == 0;
                                     if (mutant.attributes.Dexterity > 1 && dex) {
-                                        logger.log(Level.INFO, "Increasing stamina and decreasing dex");
+                                        logger.log(Level.INFO, "Increasing stamina from "+mutant.attributes.Stamina + " + to " +(mutant.attributes.Stamina+1)+" and decreasing dex from "+mutant.attributes.Dexterity+" to "+(mutant.attributes.Dexterity-1));
                                         mutant.attributes.Dexterity--;
                                         mutant.attributes.Stamina++;
                                     }
                                     if (mutant.attributes.Strength > 1 && !dex) {
-                                        logger.log(Level.INFO, "Increasing stamina and decreasing strength");
+                                        logger.log(Level.INFO, "Increasing stamina from "+mutant.attributes.Stamina + " + to " +(mutant.attributes.Stamina+1)+" and decreasing Strength from "+mutant.attributes.Strength+" to "+(mutant.attributes.Strength-1));
+
 
                                         mutant.attributes.Stamina++;
                                         mutant.attributes.Strength--;
